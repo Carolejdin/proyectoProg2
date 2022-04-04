@@ -6,4 +6,6 @@ const router = express.Router();
 //Para entrar y linkear con el controlador
 const registerController = require('../controllers/registerController');
 
-router.get()
+router.get('/', registerController.index)
+
+module.exports = router
