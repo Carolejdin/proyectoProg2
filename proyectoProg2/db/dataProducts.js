@@ -65,3 +65,4 @@ const libros = {
     ]
 
 }
+module.exports= libros
