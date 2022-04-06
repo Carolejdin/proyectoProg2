@@ -4,8 +4,8 @@
 //const router = express.Router();
 
 //Para entrar y linkear con el controlador
-//const productController = require('../controllers/productController');
+//const productController = require('../controllers/productsController');
 
-//router.get('/', productController.lista)
+//router.get('/', productController.index)
 
 //module.exports = router

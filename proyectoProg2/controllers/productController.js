@@ -1,13 +1,13 @@
+// const libros = require('../db/dataProducts');
 const productsData = require('../db/dataProducts');
 
-const productController = {
+const productsController = {
 
     index:
-    
-    function (req,res){
-    return res.render(dataProducts.lista)
+        function (req,res){
+        return res.render(libros.lista)
 
 }
 }
 
-module.exports = productsData;
+module.exports = productsController;
