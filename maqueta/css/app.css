@@ -68,7 +68,7 @@ hr {
 /*====== Main Header ======*/
 .main-header {
   padding: 15px 0;
-  background-color: var(--yellow);
+  background-color: white;
 }
 
 .main-header_home-link,
@@ -80,6 +80,7 @@ hr {
   font-size: 1.5em;
   margin-top: 20px;
   text-align: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .search-form {
@@ -109,6 +110,13 @@ hr {
   cursor: pointer;
 }
 
+.containerproducts-wrapper{
+  margin-top: 120px;
+  margin-left: 30px;
+  margin-right: 30px;
+
+
+}
 
 /*====== Main Navbar ======*/
 .btn-toggle-navbar {
@@ -121,6 +129,10 @@ hr {
   display: block;
   margin: 20px auto 0;
 }
+
+/*.row{
+  margin-top: 130px;
+}*/
 
 .main-navbar {
   margin-top: 20px;
@@ -159,6 +171,11 @@ hr {
   background-size: cover;
   background-position: center center;
   height: 100px;
+  
+}
+
+.bannernuevo{
+  height: 60px;
 }
 
 
