@@ -117,6 +117,10 @@ hr {
 
 
 }
+.libro1{
+  height: 300px;
+  width: 200px;
+}
 
 /*====== Main Navbar ======*/
 .btn-toggle-navbar {
