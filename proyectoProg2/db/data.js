@@ -1,5 +1,5 @@
 const libros = {
-    lista: [
+    productos: [
 
         {
             nombre: "Fahrenheit 451",
@@ -61,8 +61,38 @@ const libros = {
             anioDePublicacion: 1904,
             editorial: "T.P's Weekly",
         },
+      
         
+    ],
+
+    usuarios: [
+        {
+            usuario: `Jacinta Díaz`,
+            email: `Jdíaz@udesa.edu.ar`,
+            fechaDeNacimiento: `02/04/2002`,
+            nroDocumento: `44899202`,
+        },
+    ],
+
+    comentarios: [
+        {
+            nombre: `Librofan104`,
+            texto: `Recomiendo este libro al 100%, muy llevadero y entretenido!`
+
+        },
+        {
+            nombre: `Amantedeloslibros`,
+            texto: `Si bien al principio no me convencía, me terminó encantando. Nunca juzgen un libro por su portada`
+        },
+        {
+            nombre: `Booklover101`,
+            texto: `El autor es mágico, hace que tengas empatía por los personaes. Hasta lloré en el final!`
+        }, 
+        {
+            nombre: `Soylola13`,
+            texto: `Recomendadísimo! Amo esta trama, ya lo quiero volver a leer!`
+        },
     ]
 
 }
-module.exports= libros
+module.exports = libros;

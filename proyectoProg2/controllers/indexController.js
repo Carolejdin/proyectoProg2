@@ -1,15 +1,17 @@
-var main = require('../db/dataProducts');
+const libros = require('../db/data');
+var main = require('../db/data');
 
-const main = {
+//estamos haciendo alusion en cada una de las lineas a las vistas de cada uno: index.ejs, register.ejs y login.ejs
+const indexController = {
     index: function(req, res) {
-        res.render('index', { title: 'Index'});
+        res.render('index', { listaProductos: libros.productos});
     },
     login: function(req, res) {
-        res.render('login', { title: 'Login'});
+        res.render('login', );
     },
     register: function(req, res) {
-        res.render('register');
+        res.render('register', );
     }
 }
 
-module.exports = main;
+module.exports = indexController;
