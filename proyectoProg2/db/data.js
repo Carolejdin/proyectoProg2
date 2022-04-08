@@ -67,10 +67,12 @@ const libros = {
 
     usuarios: [
         {
-            usuario: `Jacinta Díaz`,
+            username: `Jacinta Díaz`,
             email: `Jdíaz@udesa.edu.ar`,
-            fechaDeNacimiento: `02/04/2002`,
-            nroDocumento: `44899202`,
+            birthDay: `02/04/2002`,
+            password: `123456`,
+            profilePic: `rutadeimagen`,
+            DNI: `44899202`,
         },
     ],
 
