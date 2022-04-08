@@ -1,11 +1,9 @@
-//Para que se ejecute express, primero lo llamo y despues lo ejecuto
-///const express = require ('express');
+var express = require('express');
+var router = express.Router();
+var controller = require('../controllers/indexController')
+//aca van los sufijos
+router.get('/', controller.product);
+router.get('/add', controller.productAdd);
 
-//const router = express.Router();
 
-//Para entrar y linkear con el controlador
-//const productController = require('../controllers/productsController');
-
-//router.get('/', productController.index)
-
-//module.exports = router
+module.exports = router;
