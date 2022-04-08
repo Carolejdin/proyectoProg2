@@ -7,7 +7,7 @@ const indexController = {
         res.render('index', { listaProductos: libros.productos});
     },
     login: function(req, res) {
-        res.render('login', );
+        res.render('login', { } );
     },
     register: function(req, res) {
         res.render('register', );
