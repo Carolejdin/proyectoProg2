@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var controller = require('../controllers/indexController')
+var controller = require('../controllers/usersController')
 
 router.get('/profile', controller.profile);
-router.get('/edit', controller.profileEdit);
+router.get('/profileEdit', controller.profileEdit);
 
 
 module.exports = router;

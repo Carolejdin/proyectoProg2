@@ -6,7 +6,7 @@ const usersController = {
         res.render('profile', { listaUsuarios: libros.usuarios});
     },
     profileEdit: function(req, res) {
-        res.render('profile-edit', { listaUsuarios: libros.usuarios});
+        res.render('profileEdit', { listaUsuarios: libros.usuarios});
     },
    
 }
