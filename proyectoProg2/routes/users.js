@@ -3,7 +3,7 @@ var router = express.Router();
 var controller = require('../controllers/indexController')
 
 router.get('/profile', controller.profile);
-router.get('/profile-edit', controller.profileEdit);
+router.get('/edit', controller.profileEdit);
 
 
 module.exports = router;
