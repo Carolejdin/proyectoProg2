@@ -196,6 +196,7 @@ hr {
 }
 
 .product-box {
+ 
   background-color: #ffffff;
   border-radius: 5px;
   overflow: hidden;
@@ -205,10 +206,12 @@ hr {
 
 .product-box a {
   display: block;
+  
 }
 
 .product-box_image {
   border-bottom: 1px solid var(--light-gray);
+
 }
 
 .product-box_data {
