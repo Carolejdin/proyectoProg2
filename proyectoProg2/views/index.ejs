@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
-	<link rel="stylesheet" href="/stylesheets/app.css">
+<link rel="stylesheet" href="/stylesheets/app.css">
 <!-- Include Head -->
 <%- include('./partials/head', {tittle: 'Listado de libros'}) %>
 
 <body>
-	
-	<!--no estoy segura lo de tittle-->
-	<%- include('./partials/header', {tittle: 'Listado de libros'}) %>  
+	<% console.log(query) %>
+	<% if (query.password === '123456') { %>
+	<%- include('./partials/headerLogueado') %>
+	<%	} else { %>
+	<%- include('./partials/header') %>
+	<%	} %>
 	<!-- Banner -->
 	<div class="banner">
 		<img src="/images/products/profesionales de la impresión.png" alt="Banner de ofertas">
@@ -19,14 +22,14 @@
 		<div class="row">
 			<div class="col-12">
 				<h2 class="products-title">Novedades</h2>
-			</div class= "fotos">
+			</div class="fotos">
 			<!-- Show the "ultimos" products -->
 			<% for(let i=0; i< listaProductos.length; i++) { %>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					
+
 					<a href="/product/<%=i%>">
-						
+
 						<figure class="product-box_image">
 							<img src="<%=listaProductos[i].imagen %>" alt="foto libro">
 						</figure>
@@ -39,10 +42,11 @@
 				</section>
 			</div>
 			<% } %>
-	<!-- /Novedades -->
+			<!-- /Novedades -->
 
 
 
-	
-</body>	
+			<%- include('./partials/footer') %>
+</body>
+
 </html>
