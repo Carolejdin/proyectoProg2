@@ -11,7 +11,10 @@ const indexController = {
     },
     register: function(req, res) {
         res.render('register', );
-    }
+    },
+    searchResults: function(req, res) {
+        res.render('searchResults', );
+    },
 }
 
 module.exports = indexController;
