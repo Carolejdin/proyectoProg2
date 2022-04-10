@@ -7,7 +7,7 @@ const productController = {
         res.render('product', { id: req.params.id, listaProduct: libros.productos, comentarios: libros.comentarios});
     },
     productAdd: function(req, res) {
-        res.render('product-add', { listaProduct: libros.productos});
+        res.render('product-add', { listaUsuarios: libros.productos});
     },
    
 }
