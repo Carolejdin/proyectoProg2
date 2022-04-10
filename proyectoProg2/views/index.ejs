@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-	<link rel="stylesheet" href="/proyectoProg2/public/stylesheets/app.css">
+	<link rel="stylesheet" href="/stylesheets/app.css">
 <!-- Include Head -->
 <%- include('./partials/head', {tittle: 'Listado de libros'}) %>
 
@@ -15,11 +15,11 @@
 	<!-- /Banner -->
 
 	<!-- Novedades -->
-	<div class="containerproducts-wrapper">
+	<div class="products-wrapper">
 		<div class="row">
 			<div class="col-12">
 				<h2 class="products-title">Novedades</h2>
-			</div>
+			</div class= "fotos">
 			<!-- Show the "ultimos" products -->
 			<% for(let i=0; i< listaProductos.length; i++) { %>
 			<div class="col-12 col-sm-6 col-lg-3">
