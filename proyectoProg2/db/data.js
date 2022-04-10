@@ -61,7 +61,7 @@ const libros = {
             anioDePublicacion: 1942,
             editorial: "Editions Gallimard",
             descripcion: "El extranjero es una novela publicada en 1942, la primera del escritor francés Albert Camus.",
-            imagen:"/images/products/extranjerocanva",
+            imagen:"/images/products/extranjerocanva.jpeg",
             comentario: "Muy interesante",
         },
         {
