@@ -28,7 +28,7 @@
 				</div>
 	
 				<div class="col-7 col-md-6">
-					<form action="" method="GET" class="search-form">
+					<form action="search-results.html" method="GET" class="search-form">
 						<input type="text" name="search" placeholder="Buscar productos, marcas y más"
 							class="search-form_input">
 						<button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
@@ -49,29 +49,29 @@
 	
 			<nav class="main-navbar">
 				<ul class="left-navbar">
-					<li><a href="/">Todos los productos</a></li>
-					<li><a href="">Cargar productos</a></li>
+					<li><a href="index.html">Todos los productos</a></li>
+					<!-- solo logueado <li><a href="">Cargar productos</a></li> -->
 				</ul>
 	
 				<ul class="right-navbar">
-					<li><a href="/profile">
-							Nombre del usuario <i class="fas fa-user"></i>
-						</a>
-					</li>
-					<li>
-						<form action="" method="post">
-							<button class="logout" type="submit">
-								Cerrar sesión <i class="fas fa-sign-in-alt"></i>
-							</button>
-						</form>
-					</li>
-					<!-- Solo deslogueado <li>
-							<a href="register.html">Creá tu cuenta <i class="far fa-address-card"></i>
+					<!-- Solo logueado <li><a href="profile.html">
+								Nombre del usuario <i class="fas fa-user"></i>
 							</a>
 						</li>
 						<li>
-							<a href="login.html">Ingresá <i class="fas fa-sign-in-alt"></i></a>
+							<form action="" method="post">
+								<button class="logout" type="submit">
+									Cerrar sesión <i class="fas fa-sign-in-alt"></i>
+								</button>
+							</form>
 						</li> -->
+					<li>
+						<a href="register.html">Creá tu cuenta <i class="far fa-address-card"></i>
+						</a>
+					</li>
+					<li>
+						<a href="login.html">Ingresá <i class="fas fa-sign-in-alt"></i></a>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -82,16 +82,12 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Agregar productos</h2>
+				<h2 class="products-title">Resultados de búsqueda</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> 
-				<form action="/" method="GET" class="form-container">
-					<input type="text" name="username" placeholder="Nombre de Usuario o Email" class="form-input">
-					<input type="password" name="product" placeholder="Agregar producto" class="form-input">
-
-					<button type="submit">Agregar</button>
-				</form>
+			<h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá van los resultados de búsqueda. <br>
+			Eliminen estás líneas y cosntruyan la página de resultados de búsqueda. <br>
+			////////////////
 			</h2>
 
 
