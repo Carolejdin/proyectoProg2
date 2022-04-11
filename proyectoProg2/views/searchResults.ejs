@@ -22,59 +22,26 @@
                             
                         </div class="fotos">
                         
-                        <% for(let i=0; i< listaProductos.length; i++) { %>
+                        <% for(let i=0; i<3; i++) { %>
                         <div class="col-12 col-sm-6 col-lg-3">
                             <section class="product-box">
             
-                                <a href="/product/<%=1%>">
+                                <a href="/product/<%=i%>">
             
                                     <figure class="product-box_image">
-                                        <img src="<%=listaProductos[1].imagen %>" alt="foto libro">
+                                        <img src="<%=listaProductos[i].imagen %>" alt="foto libro">
                                     </figure>
                                     <article class="product-box_data">
-                                        <h2> <%=listaProductos[1].nombre %> </h2>
-                                        <p><%=listaProductos[1].descripcion %> </p>
-                                        <p><%=listaProductos[1].comentario %></p>
+                                        <h2> <%=listaProductos[i].nombre %> </h2>
+                                        <p><%=listaProductos[i].descripcion %> </p>
+                                        <p><%=listaProductos[i].comentario %></p>
                                     </article>
                                 </a>
                             </section>
                         </div>
-                        <% } %>
-                        <% for(let i=0; i< listaProductos.length; i++) { %>
-                            <div class="col-12 col-sm-6 col-lg-3">
-                                <section class="product-box">
-                
-                                    <a href="/product/<%=3%>">
-                
-                                        <figure class="product-box_image">
-                                            <img src="<%=listaProductos[3].imagen %>" alt="foto libro">
-                                        </figure>
-                                        <article class="product-box_data">
-                                            <h2> <%=listaProductos[3].nombre %> </h2>
-                                            <p><%=listaProductos[3].descripcion %> </p>
-                                            <p><%=listaProductos[3].comentario %></p>
-                                        </article>
-                                    </a>
-                                </section>
-                            </div>
-                            <% } %>
-                            <% for(let i=0; i< listaProductos.length; i++) { %>
-                                <div class="col-12 col-sm-6 col-lg-3">
-                                    <section class="product-box">
-                    
-                                        <a href="/product/<%=5%>">
-                    
-                                            <figure class="product-box_image">
-                                                <img src="<%=listaProductos[5].imagen %>" alt="foto libro">
-                                            </figure>
-                                            <article class="product-box_data">
-                                                <h2> <%=listaProductos[5].nombre %> </h2>
-                                                <p><%=listaProductos[5].descripcion %> </p>
-                                                <p><%=listaProductos[5].comentario %></p>
-                                            </article>
-                                        </a>
-                                    </section>
-                                </div>
+                       
+                       
+            
                                 <% } %>
 			
 
