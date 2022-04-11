@@ -1,1 +1,32 @@
-<%- include('./partials/headerLogueado') %>
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+
+<head>
+	<%- include('./partials/head') %>
+</head>
+
+<body>
+	<%- include('./partials/headerLogueado') %>
+	<!-- Novedades -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Modificá tus datos:</h2>
+			</div>
+        </div>
+		<form action="/" method="GET" class="form-container">
+			<input type="text" name="username" placeholder="Nombre de Usuario" class="form-input">
+			<input type="text" name="email" placeholder="E-Mail" class="form-input">
+			<input type="password" name="password" placeholder="Contraseña" class="form-input">
+			<input type="date" name="birthDay" class="form-input">
+			<input type="text" name="DNI" placeholder="DNI" class="form-input">
+			<input type="file" name="profilePic" placeholder="Foto de perfil" class="form-input">
+			<button type="submit">Modificar</button>
+		</form>
+		<%- include('./partials/footer') %>
+</body>
+
+
+
+</html>

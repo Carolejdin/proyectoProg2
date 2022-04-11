@@ -103,6 +103,7 @@ const libros = {
             password: `123456`,
             profilePic: `rutadeimagen`,
             DNI: `44899202`,
+            image: "/images/products/profilepicture.jpeg"
         },
     ],
 

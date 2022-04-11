@@ -1,39 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- Include Head -->
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="./images/logo-mercado-liebre.jpg" />
 
-	<title> Mercado Liebre Argentina</title>
-	<!-- Font Awesome Stylesheet -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-	<!-- Bootstrap Grid Stylesheet -->
-	<link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css">
-	<!-- Own Stylesheet -->
-	<link rel="stylesheet" href="/stylesheets/app.css">
+	<%- include('./partials/head') %>
  
-</head>
+
 
 <body>
     <%- include('./partials/header') %>
 
-	<!-- Novedades -->
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
 				<h2 class="products-title">Resultados de libros romanticos: </h2>
 			</div>
-			<!-- Show the "ultimos" products -->
+			
 		
                 <div class="products-wrapper">
                     <div class="row">
                         <div class="col-12">
-                            <h2 class="products-title">Novedades</h2>
+                            
                         </div class="fotos">
-                        <!-- Show the "ultimos" products -->
+                        
                         <% for(let i=0; i< listaProductos.length; i++) { %>
                         <div class="col-12 col-sm-6 col-lg-3">
                             <section class="product-box">
@@ -51,6 +39,7 @@
                                 </a>
                             </section>
                         </div>
+                        <% } %>
                         <% for(let i=0; i< listaProductos.length; i++) { %>
                             <div class="col-12 col-sm-6 col-lg-3">
                                 <section class="product-box">
@@ -68,6 +57,7 @@
                                     </a>
                                 </section>
                             </div>
+                            <% } %>
                             <% for(let i=0; i< listaProductos.length; i++) { %>
                                 <div class="col-12 col-sm-6 col-lg-3">
                                     <section class="product-box">
@@ -85,12 +75,13 @@
                                         </a>
                                     </section>
                                 </div>
+                                <% } %>
 			
 
 
-	<!-- footer -->
+	
 	<%- include('./partials/footer') %>
-	<!-- /footer -->
+	
 </body>
 
 </html>

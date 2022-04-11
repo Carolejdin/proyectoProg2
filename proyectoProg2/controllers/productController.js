@@ -1,5 +1,4 @@
 const libros = require('../db/data');
-var users = require('../db/data');
 
 //estamos haciendo alusion en cada una de las lineas a las vistas de cada uno: index.ejs, register.ejs y login.ejs
 const productController = {
@@ -10,7 +9,7 @@ const productController = {
         res.render('productAdd' );
     },
     searchResults: function(req, res) {
-        res.render('searchResults',{listaProduct: libros.productos} );
+        res.render('searchResults',{listaProductos: libros.productos} );
     },
    
 }
