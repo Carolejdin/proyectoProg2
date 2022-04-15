@@ -24,28 +24,31 @@
 					<p class="product-detail-description"> <%= listaProduct[id].descripcion %></p>
 				</article>
 				<% for (let i=0; i< comentarios.length; i++) {%>
-				<div class="product-detail">
 					<div class="col-12 col-lg-4">
 						<section class="comments">
 							<article>
 								<img src="https://via.placeholder.com/35" alt="">
 								<div class="data">
 									<p class="user">
-										<strong> <a href="/profile"> </a> <%=comentarios[i].nombre%></strong>
-										<%=comentarios[i].texto%></p>
+									<strong> <a href="/profile"> <%=comentarios[i].nombre%> </a> </strong>
+									<%=comentarios[i].texto%></p>
 								</div>
-
+								
 							</article>
-
+							<% } %>
 						</section>
+						
 					</div>
+					
 				</div>
+
 			</div>
+			
 		</div>
-		<% } %>
+		
 		<form class="form" action="/register" method="POST">
 			<input class="form-input" type="text" value="" placeholder="Agregar comentario">
-			<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+			<button type="submit" action="/register" class="buy-now-button">AGREGAR COMENTARIO</button>
 		</form>
 		<!-- /product detail -->
 
