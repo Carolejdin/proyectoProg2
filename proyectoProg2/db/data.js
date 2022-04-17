@@ -1,3 +1,4 @@
+//constante, obj literal, propiedad productos, array
 const libros = {
     productos: [
 

@@ -1,6 +1,7 @@
+//requiero lo q exporta el modelo
 const libros = require('../db/data');
 
-//estamos haciendo alusion en cada una de las lineas a las vistas de cada uno: index.ejs, register.ejs y login.ejs
+//un metodo para cada request
 const indexController = {
     index: function(req, res) {
         res.render('index', { listaProductos: libros.productos});
@@ -13,5 +14,5 @@ const indexController = {
     },
     
 }
-
+//exportamos la variable
 module.exports = indexController;
