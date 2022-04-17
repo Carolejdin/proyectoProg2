@@ -5,7 +5,6 @@ var controller = require('../controllers/productController')
 router.get('/productAdd', controller.productAdd);
 router.get ('/searchResults', controller.searchResults);
 router.get('/:id', controller.product);
-//a
 
 
 module.exports = router;
