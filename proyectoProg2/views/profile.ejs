@@ -12,20 +12,21 @@
 
 	<!-- Datos del usuario -->
 	<section class="info-usuario container products-wrapper">
+		<% for(let i=0; i< listaUsuarios.length; i++) { %>
 		<div class="row">
 			<div class="img-container offset-3 col-2">
 				<img src="/images/products/fotoperfil.png" alt="foto de perfil" class="foto-perfil">
 			</div>
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
-					<h1 class="main-title"> <%=listaUsuarios.username %>   
+					<h1 class="main-title"> <%=listaUsuarios[i].username %>   
 						<a href="/profileEdit">
 							<i class="fas fa-cog"></i>
 						</a>
 					</h1>
-					<h1 class="main-title"> <%=listaUsuarios.email %>   
+					<h1 class="main-title"> <%=listaUsuarios[i].email %>   
 						<a href="/profileEdit">
-							<i class="fas fa-cog"></i>
+							
 						</a>
 					</h1>
 					<a class="btn mt-3 ml-4" href="">SEGUIR</a>
@@ -39,6 +40,7 @@
 				</div>
 			</div>
 		</div>
+		<% } %>
 	</section>
 	<!-- /Datos del usuario -->
 
