@@ -7,7 +7,7 @@ const libros = {
             autor: "Ray Bradbury",
             anioDePublicacion: 1953,
             editorial: "Debolsillo",
-            descripcion:"Fahrenheit 451 es una novela distópica del escritor estadounidense Ray Bradbury, publicada en 1953.",
+            descripcion: "Fahrenheit 451 es una novela distópica del escritor estadounidense Ray Bradbury, publicada en 1953.",
             imagen: "/images/products/fahrenheitcanva.jpeg",
             comentario: "Muy buen libro",
         },
@@ -35,17 +35,17 @@ const libros = {
             anioDePublicacion: 1862,
             editorial: "Elejandria",
             descripcion: "Los miserables es una novela del poeta y escritor francés Victor Hugo publicada en 1862",
-            imagen:"/images/products/miserablescanva.jpeg",
-            comentario:"Un libro atrapante",
+            imagen: "/images/products/miserablescanva.jpeg",
+            comentario: "Un libro atrapante",
         },
         {
             nombre: "Todo se desmorona",
             autor: "Chinua Achebe",
             anioDePublicacion: 1958,
             editorial: "A. Lacroix, Verbockhoven & ce.",
-            descripcion:"Es una novela en inglés escrita por el autor nigeriano Chinua Achebe y publicada en 1958",
-            imagen:"/images/products/desmoronacanva.jpeg",
-            comentario:"Un libro atrapante",
+            descripcion: "Es una novela en inglés escrita por el autor nigeriano Chinua Achebe y publicada en 1958",
+            imagen: "/images/products/desmoronacanva.jpeg",
+            comentario: "Un libro atrapante",
         },
         {
             nombre: "Ficciones",
@@ -53,8 +53,8 @@ const libros = {
             anioDePublicacion: 1944,
             editorial: "Editorial Sur",
             descripcion: "Ficciones es un libro de cuentos escrito por Jorge Luis Borges, publicado en 1944 y compuesto de dos partes",
-            imagen:"/images/products/ficcionescanva.jpeg",
-            comentario:"Muy buen libro",
+            imagen: "/images/products/ficcionescanva.jpeg",
+            comentario: "Muy buen libro",
         },
         {
             nombre: "El extranjero",
@@ -62,7 +62,7 @@ const libros = {
             anioDePublicacion: 1942,
             editorial: "Editions Gallimard",
             descripcion: "El extranjero es una novela publicada en 1942, la primera del escritor francés Albert Camus.",
-            imagen:"/images/products/extranjerocanva.jpeg",
+            imagen: "/images/products/extranjerocanva.jpeg",
             comentario: "Muy interesante",
         },
         {
@@ -70,17 +70,17 @@ const libros = {
             autor: "Miguel de Cervantes",
             anioDePublicacion: 1605,
             editorial: "Francisco de Robles",
-            descripcion:"Don Quijote de la Mancha​ es una novela escrita por el español Miguel de Cervantes Saavedra.",
-            imagen:"/images/products/doncanva.jpeg",
-            comentario:"Un libro atrapante"
+            descripcion: "Don Quijote de la Mancha​ es una novela escrita por el español Miguel de Cervantes Saavedra.",
+            imagen: "/images/products/doncanva.jpeg",
+            comentario: "Un libro atrapante"
         },
         {
             nombre: "Relatos cortos",
             autor: "Anton Chejov",
             anioDePublicacion: 1886,
             editorial: "Fontana",
-            descripcion:"El ruso Antón Chéjov (1860-194) es uno de los más grandes autores de relatos de todos los tiempos y todas las literaturas nacionales.",
-            imagen:"/images/products/relatoscortoscanva.jpeg",
+            descripcion: "El ruso Antón Chéjov (1860-194) es uno de los más grandes autores de relatos de todos los tiempos y todas las literaturas nacionales.",
+            imagen: "/images/products/relatoscortoscanva.jpeg",
             comentario: "Muy buen libro",
         },
         {
@@ -88,12 +88,12 @@ const libros = {
             autor: "Joseph Conrad",
             anioDePublicacion: 1904,
             editorial: "T.P's Weekly",
-            descripcion:"Nostromo es una novela política del escritor polaco-británico Joseph Conrad, publicada en 1904.",
-            imagen:"/images/products/canvanostromo.jpg",
-            comentario:"Es un libro muy atrapante",
+            descripcion: "Nostromo es una novela política del escritor polaco-británico Joseph Conrad, publicada en 1904.",
+            imagen: "/images/products/canvanostromo.jpg",
+            comentario: "Es un libro muy atrapante",
         },
-      
-        
+
+
     ],
 
     usuarios: [
@@ -121,12 +121,12 @@ const libros = {
         {
             nombre: `Booklover101`,
             texto: `El autor es mágico, hace que tengas empatía por los personaes. Hasta lloré en el final!`
-        }, 
+        },
         {
             nombre: `Soylola13`,
             texto: `Recomendadísimo! Amo esta trama, ya lo quiero volver a leer!`
         },
-        
+
     ]
 
 }

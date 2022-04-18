@@ -1,60 +1,66 @@
 <!DOCTYPE html>
 <html lang="es">
-<%- include('./partials/head', {title: 'Listado de productos'}) %>
 <!-- Include Head -->
 
-<head>
-	<%- include('./partials/head') %>
-</head>
 
-<body>
-	<%- include('./partials/header') %>
-	<!-- product detail -->
-	<div class="container products-wrapper">
-		<div class="d-flex align-items-center">
-			<h2 class="products-title"><%= listaProduct[id].nombre %></h2>
-			<p class="product-detail-description">
-				<a href="/product/productAdd">Agregar</a>
-			</p>
-		</div>
-		<div class="product-detail">
-			<div class="row">
-				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="<%= listaProduct[id].imagen %>" alt="" class="product-detail-img">
-					<p class="product-detail-description"> <%= listaProduct[id].descripcion %></p>
-				</article>
-				
-					<div class="col-12 col-lg-4">
-						<% for (let i=0; i< comentarios.length; i++) {%>
-						<section class="comments">
-							<article>
-								<img src="https://via.placeholder.com/35" alt="">
-								<div class="data">
-									<p class="user">
-									<strong> <a href="/users/profile"> <%=comentarios[i].nombre%> </a> </strong>
-									<%=comentarios[i].texto%></p>
-								</div>
-								
-							</article>
-							<% } %>
-						</section>
-						
+<%- include('./partials/head') %>
+
+
+	<body>
+		<%- include('./partials/header') %>
+			<!-- product detail -->
+			<div class="container products-wrapper">
+				<div class="d-flex align-items-center">
+					<h2 class="products-title">
+						<%= listaProduct[id].nombre %>
+					</h2>
+					<p class="product-detail-description">
+						<a href="/product/productAdd">Agregar</a>
+					</p>
+				</div>
+				<div class="product-detail">
+					<div class="row">
+						<article class="col-12 col-lg-8 product-detail-info">
+							<img src="<%= listaProduct[id].imagen %>" alt="" class="product-detail-img">
+							<p class="product-detail-description">
+								<%= listaProduct[id].descripcion %>
+							</p>
+						</article>
+
+						<div class="col-12 col-lg-4">
+							<% for (let i=0; i< comentarios.length; i++) {%>
+								<section class="comments">
+									<article>
+										<img src="https://via.placeholder.com/35" alt="">
+										<div class="data">
+											<p class="user">
+												<strong> <a href="/users/profile">
+														<%=comentarios[i].nombre%>
+													</a> </strong>
+												<%=comentarios[i].texto%>
+											</p>
+										</div>
+
+									</article>
+									<% } %>
+								</section>
+
+						</div>
+
 					</div>
-					
+
 				</div>
 
 			</div>
-			
-		</div>
-		
-		<form class="form" action="/register" method="GET">
-			<input class="form-input" type="text" value="" placeholder="Agregar comentario">
-			<button type="submit" action="/register" class="buy-now-button">AGREGAR COMENTARIO</button>
-		</form>
-		<!-- /product detail -->
 
-		<%- include('./partials/footer') %>
+			<form class="form" action="/register" method="GET">
+				<input class="form-input" type="text" value="" placeholder="Agregar comentario">
+				<button type="submit" action="/register" class="buy-now-button">AGREGAR COMENTARIO</button>
+			</form>
+			<!-- /product detail -->
 
-</body>
+			<%- include('./partials/footer') %>
+
+	</body>
 
 </html>

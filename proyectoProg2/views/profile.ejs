@@ -1,82 +1,93 @@
 <!DOCTYPE html>
 <html lang="es">
 <!-- Include Head -->
+
 <head>
 	<%- include('./partials/head') %>
 </head>
+
 <body>
 	<!-- Header -->
 	<%- include('./partials/headerLogueado') %>
 
-	<!-- /Header -->
+		<!-- /Header -->
 
-	<!-- Datos del usuario -->
-	<section class="info-usuario container products-wrapper">
-		<% for(let i=0; i< listaUsuarios.length; i++) { %>
-		<div class="row">
-			<div class="img-container offset-3 col-2">
-				<img src="/images/products/fotoperfil.png" alt="foto de perfil" class="foto-perfil">
-			</div>
-			<div class="data-container col-6">
-				<div class="d-flex align-items-center ">
-					<h1 class="main-title"> <%=listaUsuarios[i].username %>   
-						<a href="/profileEdit">
-							<i class="fas fa-cog"></i>
-						</a>
-					</h1>
-					<h1 class="main-title"> <%=listaUsuarios[i].email %>   
-						<a href="/profileEdit">
-							
-						</a>
-					</h1>
-					<a class="btn mt-3 ml-4" href="">SEGUIR</a>
-				</div>
-				<div>
-					<ul class="">
-						<li>8 productos</li>
-						<li>200 seguidores</li>
-						<li>300 comentarios</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<% } %>
-	</section>
-	<!-- /Datos del usuario -->
+		<!-- Datos del usuario -->
+		<section class="info-usuario container products-wrapper">
+			<% for(let i=0; i< listaUsuarios.length; i++) { %>
+				<div class="row">
+					<div class="img-container offset-3 col-2">
+						<img src="/images/products/fotoperfil.png" alt="foto de perfil" class="foto-perfil">
+					</div>
+					<div class="data-container col-6">
+						<div class="d-flex align-items-center ">
+							<h1 class="main-title">
+								<%=listaUsuarios[i].username %>
+									<a href="/profileEdit">
+										<i class="fas fa-cog"></i>
+									</a>
+							</h1>
+							<h1 class="main-title">
+								<%=listaUsuarios[i].email %>
+									<a href="/profileEdit">
 
-	<!-- Mis productos -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Mis productos</h2>
-			</div>
-			<!-- Show mis productos -->
-			<% for(let i=0; i< listaProductos.length; i++) { %>
-				<div class="col-12 col-sm-6 col-lg-3">
-					<section class="product-box">
-	
-						<a href="/product/<%=i%>">
-	
-							<figure class="product-box_image">
-								<img src="<%=listaProductos[i].imagen %>" alt="foto libro">
-							</figure>
-							<article class="product-box_data">
-								<h2 class="nombreDelLibro"> <%=listaProductos[i].nombre %> </h2>
-								<p><%=listaProductos[i].descripcion %> </p>
-								<p><%=listaProductos[i].comentario %></p>
-							</article>
-						</a>
-					</section>
+									</a>
+							</h1>
+							<a class="btn mt-3 ml-4" href="">SEGUIR</a>
+						</div>
+						<div>
+							<ul class="">
+								<li>8 productos</li>
+								<li>200 seguidores</li>
+								<li>300 comentarios</li>
+							</ul>
+						</div>
+					</div>
 				</div>
 				<% } %>
-			
+		</section>
+		<!-- /Datos del usuario -->
+
+		<!-- Mis productos -->
+		<div class="container products-wrapper">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="products-title">Mis productos</h2>
+				</div>
+				<!-- Show mis productos -->
+				<% for(let i=0; i< listaProductos.length; i++) { %>
+					<div class="col-12 col-sm-6 col-lg-3">
+						<section class="product-box">
+
+							<a href="/product/<%=i%>">
+
+								<figure class="product-box_image">
+									<img src="<%=listaProductos[i].imagen %>" alt="foto libro">
+								</figure>
+								<article class="product-box_data">
+									<h2 class="nombreDelLibro">
+										<%=listaProductos[i].nombre %>
+									</h2>
+									<p>
+										<%=listaProductos[i].descripcion %>
+									</p>
+									<p>
+										<%=listaProductos[i].comentario %>
+									</p>
+								</article>
+							</a>
+						</section>
+					</div>
+					<% } %>
+
+			</div>
 		</div>
-	</div>
-	<!-- /Mis productos -->
+		<!-- /Mis productos -->
 
 
-	<!-- footer -->
-	<%- include('./partials/footer') %>
-	<!-- /footer -->
-</body>	
+		<!-- footer -->
+		<%- include('./partials/footer') %>
+			<!-- /footer -->
+</body>
+
 </html>

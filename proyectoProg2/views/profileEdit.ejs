@@ -8,25 +8,29 @@
 
 <body>
 	<%- include('./partials/headerLogueado') %>
-	<!-- Novedades -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Modificá tus datos:</h2>
+		<!-- Novedades -->
+		<div class="container products-wrapper">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="products-title">Modificá tus datos:</h2>
+				</div>
 			</div>
-        </div>
-		<% for(let i=0; i< listaUsuarios.length; i++) { %>
-		<form action="/" method="GET" class="form-container">
-			<input type="text" name="username" placeholder="Nombre de Usuario" class="form-input" value="<%=listaUsuarios[i].username %>">
-			<input type="text" name="email" placeholder="E-Mail" class="form-input" value="<%=listaUsuarios[i].email %>">
-			<input type="password" name="password" placeholder="Contraseña" class="form-input" value="<%=listaUsuarios[i].password %>">
-			<input type="date" name="birthDay" class="form-input" value="<%=listaUsuarios[i].birthDay %>">
-			<input type="text" name="DNI" placeholder="DNI" class="form-input" value="<%=listaUsuarios[i].DNI %>" >
-			<input type="file" name="profilePic" placeholder="Foto de perfil" class="form-input" value="">
-			<button type="submit">Modificar</button>
-		</form>
-		<% } %>
-		<%- include('./partials/footer') %>
+			<% for(let i=0; i< listaUsuarios.length; i++) { %>
+				<form action="/" method="GET" class="form-container">
+					<input type="text" name="username" placeholder="Nombre de Usuario" class="form-input"
+						value="<%=listaUsuarios[i].username %>">
+					<input type="text" name="email" placeholder="E-Mail" class="form-input"
+						value="<%=listaUsuarios[i].email %>">
+					<input type="password" name="password" placeholder="Contraseña" class="form-input"
+						value="<%=listaUsuarios[i].password %>">
+					<input type="date" name="birthDay" class="form-input" value="<%=listaUsuarios[i].birthDay %>">
+					<input type="text" name="DNI" placeholder="DNI" class="form-input"
+						value="<%=listaUsuarios[i].DNI %>">
+					<input type="file" name="profilePic" placeholder="Foto de perfil" class="form-input" value="">
+					<button type="submit">Modificar</button>
+				</form>
+				<% } %>
+					<%- include('./partials/footer') %>
 </body>
 
 

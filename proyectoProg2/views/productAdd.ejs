@@ -9,30 +9,30 @@
 <body>
 	<%- include('./partials/headerLogueado') %>
 
-	<!-- Novedades -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Agregar productos</h2>
-			</div>
-			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> 
-				<form action="/" method="GET" class="form-container">
-					<input type="text" name="Product" placeholder="Nombre del libro " class="form-input">
-					<input type="text" name="Descripcion" placeholder="Descripcion del libro" class="form-input">
-					<input type="date" name="fecha" placeholder="Agregar fecha" class="form-input">
-					<input type="file" name="imagen" placeholder="Agregar imagen del libro" class="form-input">
-					
+		<!-- Novedades -->
+		<div class="container products-wrapper">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="products-title">Agregar productos</h2>
+				</div>
+				<!-- Show the "ultimos" products -->
+				<h2 class="col-12">
+					<form action="/" method="GET" class="form-container">
+						<input type="text" name="Product" placeholder="Nombre del libro " class="form-input">
+						<input type="text" name="Descripcion" placeholder="Descripcion del libro" class="form-input">
+						<input type="date" name="fecha" placeholder="Agregar fecha" class="form-input">
+						<input type="file" name="imagen" placeholder="Agregar imagen del libro" class="form-input">
 
 
-					<button type="submit">Agregar</button>
-				</form>
-			</h2>
+
+						<button type="submit">Agregar</button>
+					</form>
+				</h2>
 
 
-	<!-- footer -->
-	<%- include('./partials/footer') %>
-	<!-- /footer -->
+				<!-- footer -->
+				<%- include('./partials/footer') %>
+					<!-- /footer -->
 </body>
 
 </html>
