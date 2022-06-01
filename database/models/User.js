@@ -52,6 +52,18 @@ module.exports = (sequelize, dataTypes) => {
     const user = sequelize.define(alias, cols, config)    
 
 //RELACIONES ACA
+user.associate = function (models){
+   
+    user.belongsTo(models.Product, {
+        foreignKey: 'productId',
+        as: 'product'
+    }),
+   user.hasMany (models.Comentario, {
+            foreignKey: 'comentarioId',
+            as: 'comentario'
+        } );
+    }
+
 
 
     return user;

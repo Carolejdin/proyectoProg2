@@ -1,3 +1,5 @@
+//const product = require("../../controllers/productController");
+
 module.exports = (sequelize, dataTypes) => {
    
     let alias= "comentarios";
@@ -37,6 +39,16 @@ module.exports = (sequelize, dataTypes) => {
     const  comentario = sequelize.define(alias, cols, config)    
 
 //RELACIONES ACA
+comentario.associate = function (models){
+    comentario.BelongsTo(models.Product,{
+        foreignKey: 'productsId',
+        as: 'product'
+    } );
+    comentario.belongsTo(models.User, {
+        foreignKey: 'UsuarioId',
+        as: 'user'
+    })
+}
 
 
     return comentario;

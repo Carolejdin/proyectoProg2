@@ -1,5 +1,7 @@
-const libros = require('../db/data');
-var data = require('../db/data');
+//const libros = require('../db/data');
+//var data = require('../db/data');
+const libros = require('../database/models');
+const data = require('../database/models');
 
 //estamos haciendo alusion en cada una de las lineas a las vistas de cada uno: index.ejs, register.ejs y login.ejs
 const usersController = {
@@ -8,7 +10,7 @@ const usersController = {
     },
     profileEdit: function (req, res) {
         res.render('profileEdit', { listaUsuarios: data.usuarios });
-    },
+    }, 
 
 }
 

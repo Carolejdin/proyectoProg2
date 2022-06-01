@@ -38,11 +38,11 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false
         },
         createdAt : {
-            type: dataTypes.DATA,
+            type: dataTypes.DATE,
             allowNull: true
         },
         updatedAt :{
-            type: dataTypes.DATA,
+            type: dataTypes.DATE,
             allowNull: true
         },
         deletedAt :{
@@ -52,14 +52,22 @@ module.exports = (sequelize, dataTypes) => {
     
     }
     let config = {
-        tableName: "followers",
+        tableName: "products",
         timestamps: true
     }
-    const follower = sequelize.define(alias, cols, config)    
+    const product = sequelize.define(alias, cols, config)    
 
 //RELACIONES ACA
-
-
-    return follower;
+product.associate = function (models) {
+    product.belongsTo (models.User,{
+        foreignKey: 'usuarioId',
+        as: 'user'
+    } );
+    product.hasMany (models.Comentario,{
+        foreignKey: 'comentarioId',
+        as: 'comentario'
+    } );
+}
+    return product;
 }
     

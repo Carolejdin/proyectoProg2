@@ -13,11 +13,11 @@ module.exports = (sequelize, dataTypes) => {
             type:dataTypes.INTEGER
         },
         createdAt : {
-            type: dataTypes.DATA,
+            type: dataTypes.DATE,
             allowNull: true
         },
         updatedAt :{
-            type: dataTypes.DATA,
+            type: dataTypes.DATE,
             allowNull: true
         },
         deletedAt :{
@@ -33,7 +33,23 @@ module.exports = (sequelize, dataTypes) => {
     const follower = sequelize.define(alias, cols, config)    
 
 //RELACIONES ACA
+follower.associate = function(models){
+    follower.belongsToMany(models.User, {
+        as: "user",
+        through: "followers",
+        foreignKey: "usuarioId",
+        otherKey: "usuarioId",
+        timestamps: true
+    });
+    follower.belongsToMany(models.User, {
+        as: "user",
+        through: "followers",
+        foreignKey: "usuarioId",
+        otherKey: "usuarioId",
+        timestamps: true
+    })
 
+}
 
     return follower;
 }

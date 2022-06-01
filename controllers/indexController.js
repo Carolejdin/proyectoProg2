@@ -1,5 +1,6 @@
 //requiero lo q exporta el modelo
-const libros = require('../db/data');
+//const libros = require('../db/data');
+const libros = require('../database/models');
 
 //un metodo para cada request
 const indexController = {
