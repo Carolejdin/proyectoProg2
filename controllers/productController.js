@@ -12,17 +12,17 @@ const productController = {
   //  searchResults: function (req, res) {
   //      res.render('searchResults', { listaProductos: libros.productos });
    // },
-searchResults:function(req,res){
+//searchResults:function(req,res){
     
-   db.products.findAll(
-       {
-           where:{
+  // db.products.findAll(
+      // {
+       //    where:{
 
-           }
-       }
-   ) //products es el alias del modelo
-   .then(function(products))
-   res.render()
+        //   }
+    //   }
+ //  ) //products es el alias del modelo
+  // .then(function(products))
+  // res.render()
 }
-}
+
 module.exports = productController;
