@@ -32,7 +32,7 @@ const bcrypt = require('bcryptjs');
 const req = require('express/lib/request');
 const res = require('express/lib/response');
 
-let usuario = {
+ let usuario = {
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
@@ -61,10 +61,13 @@ const userController = {
 
 let errors = {};
 
-if(req.body.username == ""){
+
+/* if(req.body.username == ""){
     errors.message = "Complete el nombre de usuario";
     res.locals.errors = errors;
-    return res.render('register');
+    return res.redirect('register');
+}else{
+    return res.render('/')
 }
 
 if(req.body.email == ""){
@@ -77,7 +80,7 @@ if(req.body.password == ""){
     errors.message = "Complete el email";
     res.locals.errors = errors;
     return res.render('register');
-}
+} */
     
     
 

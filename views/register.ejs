@@ -24,7 +24,16 @@
 				<input type="file" name="profilePic" placeholder="Foto de perfil" class="form-input">
 				<button type="submit">Registrarme</button>
 			</form>
-			<%- include('./partials/footer') %>
+
+
+	<% if(locals.errors){%>
+		<p class="error"> <%= errors.message %> </p>
+		<%} %>
+
+	}
+		
+		
+		<%- include('./partials/footer') %>
 </body>
 
 
