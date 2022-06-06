@@ -20,7 +20,6 @@ var storage = multer.diskStorage({
 
 router.get('/profile', controller.profile);
 router.get('/profileEdit', controller.profileEdit);
-router.get('/register', controller.create);
-router.post('/register', controller.create);
+
 
 module.exports = router;
