@@ -34,20 +34,21 @@ module.exports = (sequelize, dataTypes) => {
 
 //RELACIONES ACA
 follower.associate = function(models){
-    follower.belongsToMany(models.User, {
-        as: "user",
+    follower.belongsToMany(models.users, {
+        as: "users",
         through: "followers",
         foreignKey: "usuarioId",
         otherKey: "usuarioId",
         timestamps: true
     });
-    follower.belongsToMany(models.User, {
+    follower.belongsToMany(models.users, {
         as: "user",
         through: "followers",
         foreignKey: "usuarioId",
         otherKey: "usuarioId",
         timestamps: true
     })
+  
 
 }
 

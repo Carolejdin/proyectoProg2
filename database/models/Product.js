@@ -55,19 +55,19 @@ module.exports = (sequelize, dataTypes) => {
         tableName: "products",
         timestamps: true
     }
-    const product = sequelize.define(alias, cols, config)    
+    const products = sequelize.define(alias, cols, config)    
 
 //RELACIONES ACA
-product.associate = function (models) {
-    product.belongsTo (models.User,{
+products.associate = function (models) {
+    products.belongsTo (models.users,{
         foreignKey: 'usuarioId',
-        as: 'user'
+        as: 'users'
     } );
-    product.hasMany (models.Comentario,{
+    products.hasMany (models.comentarios,{
         foreignKey: 'comentarioId',
-        as: 'comentario'
+        as: 'comentarios'
     } );
 }
-    return product;
+    return products;
 }
     

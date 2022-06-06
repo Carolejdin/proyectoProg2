@@ -36,20 +36,20 @@ module.exports = (sequelize, dataTypes) => {
         tableName: "comentarios",
         timestamps: true
     }
-    const  comentario = sequelize.define(alias, cols, config)    
+    const  comentarios = sequelize.define(alias, cols, config)    
 
 //RELACIONES ACA
-comentario.associate = function (models){
-    comentario.BelongsTo(models.Product,{
+comentarios.associate = function (models){
+    comentarios.belongsTo(models.products,{
         foreignKey: 'productsId',
-        as: 'product'
+        as: 'products'
     } );
-    comentario.belongsTo(models.User, {
+    comentarios.belongsTo(models.users, {
         foreignKey: 'UsuarioId',
-        as: 'user'
+        as: 'users'
     })
 }
 
 
-    return comentario;
+    return comentarios;
 }

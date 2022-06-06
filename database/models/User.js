@@ -54,13 +54,13 @@ module.exports = (sequelize, dataTypes) => {
 //RELACIONES ACA
 user.associate = function (models){
    
-    user.belongsTo(models.Product, {
+    user.hasMany(models.products, {
         foreignKey: 'productId',
-        as: 'product'
+        as: 'products'
     }),
-   user.hasMany (models.Comentario, {
+   user.hasMany(models.comentarios, {
             foreignKey: 'comentarioId',
-            as: 'comentario'
+            as: 'comentarios'
         } );
     }
 
