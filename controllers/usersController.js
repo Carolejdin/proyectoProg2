@@ -13,10 +13,10 @@ const usersController = {
     create: function(req, res){
         //mostrar el form de registro
         //Controlar que el usario no esté logueado
-        if(req.session.user != undefined){
+        if(req.session.user!= undefined){
             return res.redirect('/')
         } else {
-            return res.render('register');
+            return res.render('/users/register');
         }
         
     },
@@ -49,7 +49,7 @@ const usersController = {
                 if(user !== null){
                     errores.message = "El email ya existe. Por favor, elija otro.";
                     res.locals.errores = errores;
-                    return res.render('register');
+                    return res.render('/users/register');
                 } else {
                     //Obtener los datos del formulario y armar el objeto literal que quiero guardar
                     let user = {

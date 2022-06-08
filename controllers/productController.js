@@ -17,15 +17,15 @@ const op = db.Sequelize.Op;
 const productController = {
   searchResults: function (req, res) {
     let resultados = req.query.search
-    db.products.findAll({  /* products es el alias del modelo */
+    db.Product.findAll({  /* products es el alias del modelo */
       where: [{ nombre: { [op.gt]: "%" + req.query.search } },
 
       { descripcion: { [op.gt]: "%" + req.query.search } }
       ]
     })
       .then(function (resultados) {
-        if (resultados != "") {
-          return res.render('searchResults', { search: resultados })
+        if (resultados!= "") {
+          return res.render('/product/searchResults', { search: req.query.search })
         } else {
           res.send('no se encontraron resultados')
         }
