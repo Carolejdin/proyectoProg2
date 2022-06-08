@@ -6,7 +6,7 @@ const db = require('../database/models');
 //un metodo para cada request
 const indexController = {
     index: function (req, res) {
-        res.redirect('/product');
+        res.render('index');
     },
     login: function (req, res) {
         return res.render('login', {title: 'login'});
