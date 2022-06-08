@@ -2,7 +2,7 @@
 
 module.exports = (sequelize, dataTypes) => {
    
-    let alias= "comentarios";
+    let alias= "Comentario";
     let cols = {
         id: {
             type: dataTypes.INTEGER,
@@ -36,20 +36,20 @@ module.exports = (sequelize, dataTypes) => {
         tableName: "comentarios",
         timestamps: true
     }
-    const  comentarios = sequelize.define(alias, cols, config)    
+    const  Comentario = sequelize.define(alias, cols, config)    
 
 //RELACIONES ACA
-comentarios.associate = function (models){
-    comentarios.belongsTo(models.products,{
+Comentario.associate = function (models){
+    Comentario.belongsTo(models.Product,{
         foreignKey: 'productsId',
         as: 'products'
     } );
-    comentarios.belongsTo(models.users, {
+    Comentario.belongsTo(models.User, {
         foreignKey: 'UsuarioId',
         as: 'users'
     })
 }
 
 
-    return comentarios;
+    return Comentario;
 }

@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    let alias= "followers";
+    let alias= "Follower";
     let cols = {
         id: {
             type: dataTypes.INTEGER,
@@ -30,18 +30,18 @@ module.exports = (sequelize, dataTypes) => {
         tableName: "followers",
         timestamps: true
     }
-    const follower = sequelize.define(alias, cols, config)    
+    const Follower = sequelize.define(alias, cols, config)    
 
 //RELACIONES ACA
-follower.associate = function(models){
-    follower.belongsToMany(models.users, {
+Follower.associate = function(models){
+    Follower.belongsToMany(models.User, {
         as: "users",
         through: "followers",
         foreignKey: "usuarioId",
         otherKey: "usuarioId",
         timestamps: true
     });
-    follower.belongsToMany(models.users, {
+    Follower.belongsToMany(models.User, {
         as: "user",
         through: "followers",
         foreignKey: "usuarioId",
@@ -52,6 +52,6 @@ follower.associate = function(models){
 
 }
 
-    return follower;
+    return Follower;
 }
     

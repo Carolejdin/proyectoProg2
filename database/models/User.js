@@ -1,6 +1,6 @@
 module.exports = (sequelize, dataTypes) => {
    
-    let alias= "users";
+    let alias= "User";
     let cols = {
         id: {
             type: dataTypes.INTEGER,
@@ -46,25 +46,37 @@ module.exports = (sequelize, dataTypes) => {
     
     }
     let config = {
-        tableName: "comentarios",
+        tableName: "users",
         timestamps: true
     }
-    const user = sequelize.define(alias, cols, config)    
+    const User = sequelize.define(alias, cols, config)    
 
 //RELACIONES ACA
-user.associate = function (models){
+User.associate = function (models){
    
-    user.hasMany(models.products, {
+    User.hasMany(models.Product, {
         foreignKey: 'productId',
         as: 'products'
     }),
-   user.hasMany(models.comentarios, {
-            foreignKey: 'comentarioId',
+   User.hasMany(models.Comentario, {
+            foreignKey: 'userId',
             as: 'comentarios'
-        } );
+        } ),
+    User.belongsToMany(models.User, {
+        as: 'seguido',
+        through: 'seguidores',
+        foreignKey:'seguidorId',
+        timestamps: true
+ }),
+ User.belongsToMany(models.User, {
+    as: 'seguidor',
+    through: 'seguidores',
+    foreignKey:'seguidorId',
+    timestamps: true
+})
     }
 
 
 
-    return user;
+    return User;
 }
