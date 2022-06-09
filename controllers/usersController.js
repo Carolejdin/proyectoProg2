@@ -13,10 +13,11 @@ const usersController = {
     create: function(req, res){
         //mostrar el form de registro
         //Controlar que el usario no esté logueado
+      //return res.render('register')
         if(req.session.user != undefined){
             return res.redirect('/')
         } else {
-            return res.render('/users/register');
+            return res.render('register');
        }
         
     },

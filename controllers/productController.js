@@ -16,11 +16,12 @@ const op = db.Sequelize.Op;
 // },
 const productController = {
   searchResults: function (req, res) {
-    let resultados = req.query.search
-    db.Product.findAll({  /* products es el alias del modelo */
-      where: [{ nombre: { [op.gt]: "%" + req.query.search } },
+    //return res.send('hola')
+    
+    db.Product.findAll({  
+      where: [{ nombre: { [op.like]: "%" + req.query.search + "%"  } },
 
-      { descripcion: { [op.gt]: "%" + req.query.search } }
+      { descripcion: { [op.like]: "%" + req.query.search + "%" } }
       ]
     })
       .then(function (resultados) {
