@@ -76,7 +76,43 @@ const usersController = {
 
 
     },
-    
+    login: function (req,res){
+        if (req.session.user != undefined) {
+            return res.redirect ('/')
+        } else {
+            return res.render ('login')
+        }
+    },
+
+    signIn: function (req,res){
+        users.findOne ({
+            where:[{ email:req.body.email}] 
+        }) 
+        .then(function(user){
+            let passencriptada = bcrypt.hashsync (req.body.password, 10)
+            let check = bcrypt. compareSync (req.body.password, passencriptada)
+            if (check !== false){
+                return res.redirect ('/')
+            } else {
+                return res.send ('Contraseña incorrecta')
+            }
+        
+
+            //si trajo un usuario hay que chequear la contraseña con compareSync()
+            //Si las contraseñas no coincuiden mandamos mensaje de error.
+
+            if(user){
+                req.session.user = user.dataValues;
+                //Si el usuario tildó recordarme creo la cookie
+                res.cookie('userId',user.dataValues.id,{maxAge: 1000*60*100} )
+            }
+            console.log(req.session.user);
+            return res.redirect('/')
+
+        })
+        .catch(error => console.log(error))
+    }
+
     
 
 }
