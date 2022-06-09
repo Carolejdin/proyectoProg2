@@ -13,11 +13,11 @@ const usersController = {
     create: function(req, res){
         //mostrar el form de registro
         //Controlar que el usario no esté logueado
-        if(req.session.user!= undefined){
+        if(req.session.user != undefined){
             return res.redirect('/')
         } else {
             return res.render('/users/register');
-        }
+       }
         
     },
     store: function(req, res){
@@ -30,7 +30,7 @@ const usersController = {
             res.locals.errores = errores;
             return res.render('register');
         } else if(req.body.password == ""){
-            errores.message = "la contraseña es obligatoria";
+            errores.message = "La contraseña es obligatoria";
             res.locals.errores = errores;
             return res.render('register');                     
         } else if(req.body.profilePic == undefined){
