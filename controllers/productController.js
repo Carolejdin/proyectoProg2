@@ -18,16 +18,19 @@ const op = db.Sequelize.Op;
 const productController = {
   searchResults: function (req, res) {
     //return res.send('hola')
-    
-    db.Product.findAll({  
-      where: [{ nombre: { [op.like]: "%" + req.query.search + "%"  } },
+    let palabraBuscada = req.query.search
+    let condicion ={ 
+      where: [{ nombre: { [op.like]: "%" + palabraBuscada + "%"  } },
 
-      { descripcion: { [op.like]: "%" + req.query.search + "%" } }
+      { descripcion: { [op.like]: "%" + palabraBuscada + "%" } }
       ]
-    })
-      .then(function (resultados) {
+    }
+  
+  db.Product.findAll(condicion)
+
+     .then(function (resultados) {
         if (resultados!= "") {
-          return res.render('/product/searchResults', { search: req.query.search })
+          return res.render('searchResults', { search: palabraBuscada})
         } else {
           res.send('no se encontraron resultados')
         }
@@ -58,6 +61,9 @@ let producto ={
 db.Product.create(producto)
 .then((results) => {return res.redirect('/products')})
 .catch ((error) => {return res.send ('Hay un error' + error)})
+},
+delete: function (req,res){
+  bd.Product
 }
 
 
