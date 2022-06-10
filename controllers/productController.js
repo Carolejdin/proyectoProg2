@@ -2,6 +2,7 @@
 const db = require('../database/models');
 const op = db.Sequelize.Op;
 
+
 //estamos haciendo alusion en cada una de las lineas a las vistas de cada uno: index.ejs, register.ejs y login.ejs
 //pruebaaaaa
 
@@ -33,13 +34,35 @@ const productController = {
 
       })
       .catch(error => console.log(error))
-    }
+    },
+    //showForm: function (req, res) {
+    //  if (req.session.user != undefined){
+     //   return res.redirect('productAdd')
+    //  } else {
+     //   return res.redirect('register')
+     // }
+//}
+//datos del formularioo
+showForm: function (req,res){
+  return res.render('productAdd')
+},
+store: function (req,res){
+let producto ={
+  nombre: req.body.nombre,
+  descripcion: req.body.descripcion,
+  anioDePublicacion: req.body.anioDePublicacion,
+  autor: req.body.autor,
+  editorial: req.body.editorial,
+  imagen: req.file.filename
+}
+Product.create(producto)
+.then((results) => {return res.redirect('/products')})
+.catch ((error) => {return res.send ('Hay un error' + error)})
 }
 
 
 
 
-
-
+}
 
 module.exports = productController;
