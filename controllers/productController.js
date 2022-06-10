@@ -55,7 +55,7 @@ let producto ={
   editorial: req.body.editorial,
   imagen: req.file.filename
 }
-Product.create(producto)
+db.Product.create(producto)
 .then((results) => {return res.redirect('/products')})
 .catch ((error) => {return res.send ('Hay un error' + error)})
 }
