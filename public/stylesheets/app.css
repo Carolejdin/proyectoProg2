@@ -8,7 +8,7 @@
   --dark-blue: #03264C;
   --light-blue: #1259c3;
   --gray: #666666;
-  --light-gray: #fffaf4;
+  --light-gray: #ffffff;
   --green: #39b54a;
   --base-font-family: 'Roboto', sans-serif
 }
@@ -199,7 +199,7 @@ hr {
   font-size: 3.2em;
   font-weight: bold;
   font-weight: 400;
-  color: #3d1111;
+  color: #817993;
 }
 
 .product-box {
@@ -300,7 +300,7 @@ hr {
 }
 
 .footer-data i {
-  color: #3d1111;
+  color: #817993;
   font-size: 3.5em;
 }
 
