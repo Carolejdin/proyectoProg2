@@ -15,7 +15,7 @@
 					<h2 class="products-title">Registrate</h2>
 				</div>
 			</div>
-			<form action="/" method="POST" enctype="multipart/form-data" class="form-container">
+			<form action="/users/register" method="POST" class="form-container">
 				<input type="text" name="username" placeholder="Nombre de Usuario" class="form-input">
 				<input type="text" name="email" placeholder="E-Mail" class="form-input">
 				<input type="password" name="password" placeholder="Contraseña" class="form-input">
@@ -26,8 +26,8 @@
 			</form>
 
 
-	<% if(locals.errors){%>
-		<p class="error"> <%= errors.message %> </p>
+	<% if(locals.errores){%>
+		<p class="error"> <%= errores.message %> </p>
 		<%} %>
 
 	
