@@ -63,12 +63,37 @@ db.Product.create(producto)
 .catch ((error) => {return res.send ('Hay un error' + error)})
 },
 delete: function (req,res){
-  bd.Product
+  bd.Product.destroy ({were: {palabraBuscada}})
+  .then(function(Product){
+    res.redirect('/')
+  })
+  .catch(function(error){
+    res.send(error)
+  })
+},
+edit: function (req,res){
+  db.Product.findByPk(palabraBuscada)
+  .then(function(Product){
+    res.render('productEdit', {Product});
+  })
+  .catch(function(error){
+    res.send(error)
+  })
+
+
+
+},
+update: function (req,res){
+  db.Product.update(req.body, {where: {id: req.params.id}})
+  .then(function(Product){
+    res.redirect('/');
+  })
+  .catch(function(error){
+    res.send(error)
+  })
+
+
+
 }
-
-
-
-
 }
-
 module.exports = productController;

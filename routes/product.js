@@ -21,6 +21,8 @@ router.get('/searchResults', controller.searchResults);
 router.get ('/ProductAdd', controller.showForm)
 
 router.post('/store', upload.single('imagen'), controller.store);
+router.get ('/productEdit', controller.edit);
+router.get ('/ProductAdd', controller.delete);
 
 
 module.exports = router;
