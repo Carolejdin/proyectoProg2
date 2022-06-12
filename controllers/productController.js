@@ -1,21 +1,8 @@
 //const libros = require('../db/data');
 const db = require('../database/models');
 const op = db.Sequelize.Op;
-
-
-//estamos haciendo alusion en cada una de las lineas a las vistas de cada uno: index.ejs, register.ejs y login.ejs
-//pruebaaaaa
-
-//  product: function (req, res) {
-//     res.render('product', { id: req.params.id, listaProduct: libros.productos, comentarios: libros.comentarios });
-//  },
-// productAdd: function (req, res) {
-//     res.render('productAdd');
-// },
-//  searchResults: function (req, res) {
-//      res.render('searchResults', { listaProductos: libros.productos });
-// },
 const productController = {
+  //resultados de busqueda
   searchResults: function (req, res) {
     //return res.send('hola')
     let palabraBuscada = req.query.search
@@ -46,9 +33,11 @@ const productController = {
      // }
 //}
 //datos del formularioo
-showForm: function (req,res){
+//mostrar el form de agregar producto
+showProductAdd: function (req,res){
   return res.render('productAdd')
 },
+//guarda la info de agregar producto
 store: function (req,res){
 let producto ={
   nombre: req.body.nombre,
@@ -62,27 +51,28 @@ db.Product.create(producto)
 .then((results) => {return res.redirect('/products')})
 .catch ((error) => {return res.send ('Hay un error' + error)})
 },
+//elimina producto
 delete: function (req,res){
-  bd.Product.destroy ({were: {palabraBuscada}})
+  bd.Product.destroy ({were: {id: req.params.id}})
   .then(function(Product){
     res.redirect('/')
   })
   .catch(function(error){
     res.send(error)
   })
+
 },
+//edita el producto
 edit: function (req,res){
-  db.Product.findByPk(palabraBuscada)
+  db.Product.findByPk(req.params.id)
   .then(function(Product){
     res.render('productEdit', {Product});
   })
   .catch(function(error){
     res.send(error)
   })
-
-
-
 },
+//guarda la info del edit
 update: function (req,res){
   db.Product.update(req.body, {where: {id: req.params.id}})
   .then(function(Product){
@@ -91,9 +81,7 @@ update: function (req,res){
   .catch(function(error){
     res.send(error)
   })
+},
 
-
-
-}
 }
 module.exports = productController;

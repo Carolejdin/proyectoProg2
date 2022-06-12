@@ -15,14 +15,17 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage })
 //aca van los sufijos
 //router.get('/productAdd', controller.productAdd);
+//mostrar los productos
 router.get('/searchResults', controller.searchResults);
 //router.post('/ProductAdd', controller.showForm)
 //router.get('/:id', controller.product);
-router.get ('/ProductAdd', controller.showForm)
+router.get ('/productAdd', controller.showProductAdd)
 
 router.post('/store', upload.single('imagen'), controller.store);
 router.get ('/productEdit', controller.edit);
-router.get ('/ProductAdd', controller.delete);
+router.post ('/productAdd', controller.update);
+//eliminar productos
+router.post ('/productAdd', controller.delete);
 
 
 module.exports = router;

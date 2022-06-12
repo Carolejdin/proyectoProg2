@@ -31,11 +31,11 @@ module.exports = (sequelize, dataTypes) => {
         },
         comentario: {
             type:dataTypes.STRING,
-            allowNull: false
+            
         },
         usuario: {
             type:dataTypes.INTEGER,
-            allowNull: false
+            
         },
         createdAt : {
             type: dataTypes.DATE,

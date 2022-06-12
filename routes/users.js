@@ -24,6 +24,7 @@ router.get('/register', controller.create);
 router.post('/register', controller.store);
 router.get ('/login', controller.login)
 router.post ('/login', controller.signIn)
+router.get ('/logout', controller.logout)
 //router.post('/store', upload.single('profilePic'), controller.store);
 
 

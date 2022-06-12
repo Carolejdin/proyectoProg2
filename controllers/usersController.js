@@ -127,6 +127,11 @@ const usersController = {
                 console.log(error);
                 return res.render('login');
             })
+    },
+    logout: function (req,res){
+        req.session.destroy();
+        res.clearCookie('usuarioId');
+        return res.redirect('/')
     }
      
 
