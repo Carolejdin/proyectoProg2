@@ -1,6 +1,7 @@
 //const libros = require('../db/data');
 const db = require('../database/models/index');
 const op = db.Sequelize.Op;
+const products = db.Product;
 
 
 
@@ -9,15 +10,18 @@ const productController = {
   searchResults: function (req, res) {
     //return res.send('hola')
     let palabraBuscada = req.query.search
+    
 
     let condicion ={ 
       where: [
-        { nombre: { [op.like]: "%" + palabraBuscada + "%"  } },
-        { descripcion: { [op.like]: "%" + palabraBuscada + "%" } }
+        { nombre: 'carol' },
+        // { nombre: { [op.like]: "%" + palabraBuscada + "%"  } },
+        // { descripcion: { [op.like]: "%" + palabraBuscada + "%" } }
       ]
     }
-    console.log(db.models);
-    db.Product.findAll()
+    //console.log(db.models);
+    //return res.send('asdasd')
+    products.findAll()
      .then(function(resultados) {
        return res.send(resultados)
         if (resultados!= "") {
