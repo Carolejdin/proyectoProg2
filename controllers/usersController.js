@@ -130,7 +130,9 @@ const usersController = {
     },
     logout: function (req,res){
         req.session.destroy();
-        res.clearCookie('usuarioId');
+        if(req.cookies.userId !== undefined){
+            res.clearCookie('userId')
+        }
         return res.redirect('/')
     }
      

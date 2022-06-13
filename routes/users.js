@@ -16,15 +16,15 @@ var storage = multer.diskStorage({
     }
   })
    
-  var upload = multer({ storage: storage })
+var upload = multer({ storage: storage })
 
 router.get('/profile', controller.profile);
 router.get('/profileEdit', controller.profileEdit);
 router.get('/register', controller.create);
 router.post('/register', controller.store);
-router.get ('/login', controller.login)
-router.post ('/login', controller.signIn)
-router.get ('/logout', controller.logout)
+router.get ('/login', controller.login);
+router.post ('/login', controller.signIn);
+router.post('/logout', controller.logout);
 //router.post('/store', upload.single('profilePic'), controller.store);
 
 
