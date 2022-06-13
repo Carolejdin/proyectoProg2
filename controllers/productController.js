@@ -45,7 +45,7 @@ let producto ={
   anioDePublicacion: req.body.anioDePublicacion,
   autor: req.body.autor,
   editorial: req.body.editorial,
-  imagen: req.file.filename
+  imagen: req.file.imagen
 }
 db.Product.create(producto)
 .then((results) => {return res.redirect('/products')})
