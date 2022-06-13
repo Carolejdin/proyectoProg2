@@ -22,24 +22,24 @@
 
                             </div class="fotos">
 
-                            <% for(let i=0; i<search.length; i++) { %> 
+                         
                                 <div class="col-12 col-sm-6 col-lg-3">
                                     <section class="product-box">
 
-                                        <a href="/product/<%=i%>">
+                                        <a href="/product/">
 
                                             <figure class="product-box_image">
-                                                <img src="<%=search[i].imagen %>" alt="foto libro">
+                                                <img src="<%=search.imagen %>" alt="foto libro">
                                             </figure>
                                             <article class="product-box_data">
                                                 <h2>
-                                                    <%=search[i].nombre %>
+                                                    <%=search.nombre %>
                                                 </h2>
                                                 <p>
-                                                    <%=search[i].descripcion %>
+                                                    <%=search.descripcion %>
                                                 </p>
                                                 <p>
-                                                    <%=search[i].comentario %>
+                                                    <%=search.comentario %>
                                                 </p>
                                             </article>
                                         </a>
@@ -48,7 +48,7 @@
 
 
 
-                                <% } %>
+                             
 
 
 

@@ -28,6 +28,7 @@ const usersController = {
     },
     store: function (req, res) {
         //Detectar situaciones irregulares o errores.
+        //return res.send(req.file)
         res.locals.errores = "";
         let errores = {};
 
@@ -40,7 +41,7 @@ const usersController = {
             errores.message = "La contraseña debe tener al menos 3 caractéres";
         } else if (req.body.birthDay == "") {
             errores.message = "La fecha de nacimiento es obligatoria";
-        } else if (!req.body.profilePic) {
+        } else if (!req.file) {
             errores.message = "La foto de perfil es obligatoria";
         }
 
@@ -66,7 +67,7 @@ const usersController = {
                         dni: req.body.DNI,
                         username: req.body.username,
                         password: bcrypt.hashSync(req.body.password, 10), //vamos a hashear la contraseña que viene del formulario.
-                        profilePic: req.body.profilePic,
+                        profilePic: req.file.filename,
                     }
                     //return res.send (user)
                     //Guardar la info en la base de datos

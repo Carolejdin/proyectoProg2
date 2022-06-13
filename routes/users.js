@@ -21,7 +21,7 @@ var upload = multer({ storage: storage })
 router.get('/profile', controller.profile);
 router.get('/profileEdit', controller.profileEdit);
 router.get('/register', controller.create);
-router.post('/register', controller.store);
+router.post('/register', upload.single('profilePic'), controller.store);
 router.get ('/login', controller.login);
 router.post ('/login', controller.signIn);
 router.post('/logout', controller.logout);

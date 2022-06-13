@@ -1,4 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
+   
     let alias= "Product";
     let cols = {
         id: {
@@ -31,11 +32,6 @@ module.exports = (sequelize, dataTypes) => {
         },
         comentario: {
             type:dataTypes.STRING,
-            
-        },
-        usuario: {
-            type:dataTypes.INTEGER,
-            
         },
         createdAt : {
             type: dataTypes.DATE,

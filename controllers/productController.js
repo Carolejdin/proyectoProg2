@@ -1,21 +1,25 @@
 //const libros = require('../db/data');
-const db = require('../database/models');
+const db = require('../database/models/index');
 const op = db.Sequelize.Op;
+
+
+
 const productController = {
   //resultados de busqueda
   searchResults: function (req, res) {
     //return res.send('hola')
     let palabraBuscada = req.query.search
-    let condicion ={ 
-      where: [{ nombre: { [op.like]: "%" + palabraBuscada + "%"  } },
 
-      { descripcion: { [op.like]: "%" + palabraBuscada + "%" } }
+    let condicion ={ 
+      where: [
+        { nombre: { [op.like]: "%" + palabraBuscada + "%"  } },
+        { descripcion: { [op.like]: "%" + palabraBuscada + "%" } }
       ]
     }
-  
-  db.Product.findAll(condicion)
-
-     .then(function (resultados) {
+    console.log(db.models);
+    db.Product.findAll()
+     .then(function(resultados) {
+       return res.send(resultados)
         if (resultados!= "") {
           return res.render('searchResults', { search: palabraBuscada})
         } else {
@@ -39,17 +43,19 @@ showProductAdd: function (req,res){
 },
 //guarda la info de agregar producto
 store: function (req,res){
+  // res.send(req.file)
 let producto ={
   nombre: req.body.nombre,
   descripcion: req.body.descripcion,
   anioDePublicacion: req.body.anioDePublicacion,
   autor: req.body.autor,
   editorial: req.body.editorial,
-  imagen: req.file.imagen
+  imagen: req.file.filename
 }
+
 db.Product.create(producto)
-.then((results) => {return res.redirect('/products')})
-.catch ((error) => {return res.send ('Hay un error' + error)})
+  .then((results) => {return res.redirect('/')})
+  .catch ((error) => {return res.send ('Hay un error' + error)})
 },
 //elimina producto
 delete: function (req,res){
