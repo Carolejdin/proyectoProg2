@@ -55,7 +55,7 @@ let producto ={
 }
 
 db.Product.create(producto)
-  .then((results) => {return res.redirect('/')})
+  .then((results) => {return res.render('index', {producto : producto}) })
   .catch ((error) => {return res.send ('Hay un error' + error)})
 },
 //elimina producto
