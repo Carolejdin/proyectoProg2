@@ -49,6 +49,7 @@ let producto ={
   descripcion: req.body.descripcion,
   anioDePublicacion: req.body.anioDePublicacion,
   autor: req.body.autor,
+  comentario: req.body.comentario, 
   editorial: req.body.editorial,
   imagen: req.file.filename
 }
