@@ -68,7 +68,8 @@ let producto ={
   autor: req.body.autor,
   comentario: req.body.comentario, 
   editorial: req.body.editorial,
-  imagen: req.file.filename
+  imagen: req.file.filename,
+  id:req.session.user.id
 }
 
 db.Product.create(producto)
