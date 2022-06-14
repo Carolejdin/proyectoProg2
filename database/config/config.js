@@ -20,6 +20,9 @@ module.exports=
     "database": "books_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
+  },
+  "define":{
+    "paranoid":true 
   }
 }
 // aca vamos a poner toda la info de la db, nombre de la db, contrasena, usuario, tipo de la misma, etc

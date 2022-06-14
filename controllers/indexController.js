@@ -13,7 +13,7 @@ const indexController = {
             autor: req.body.autor,
             comentario: req.body.comentario, 
             editorial: req.body.editorial,
-           // imagen: req.file.filename
+            //imagen: req.file.filename
           }
         return res.render('index', { producto : producto });
     },
