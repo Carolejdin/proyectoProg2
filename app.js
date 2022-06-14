@@ -22,6 +22,38 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+/* app.use(function(req, res, next){
+  res.locals.usuarioLogueado = {
+    username : username
+  }
+}
+
+)
+app.use(function(req, res, next){
+  if (req.session.usuarioLogueado != undefined) {
+    res.locals.user = req.session.usuarioLogueado
+  }
+  return next()
+})
+ */
+
+app.use(function(req, res, next) {
+  if (req.cookies.userId != undefined && req.session.user == undefined) {
+
+    let idUsuarioEnCookie = req.cookies.userId;
+    
+    db.User.findByPk(idUsuarioEnCookie)
+    .then((user) => {
+      req.session.user = user.dataValues;
+      res.locals.user  = user.dataValues;
+      return next();
+    }).catch((err) => {
+      console.log(err);
+    });
+  } else {
+    return next();
+  }
+})
 
 app.use(session({
   secret: "books_db",

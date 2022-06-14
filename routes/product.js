@@ -15,6 +15,7 @@ var storage = multer.diskStorage({
   })
   
 var upload = multer({ storage: storage })
+
 //aca van los sufijos
 //router.get('/productAdd', controller.productAdd);
 //mostrar los productos
@@ -27,6 +28,7 @@ router.get ('/productAdd', controller.showProductAdd)
 router.post('/store', upload.single('imagen'), controller.store);
 router.get ('/productEdit', controller.edit);
 router.post ('/productAdd', controller.update);
+router.post ('/id/:id', controller.comentarios)
 //eliminar productos
 router.post ('/productAdd', controller.delete);
 

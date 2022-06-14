@@ -6,7 +6,7 @@
 
 	<body>
 		
-		<% if (locals.user != undefined) { %>
+		<% if (locals.user != null) { %>
 			<%- include('./partials/headerLogueado')  %> 
 	<% } else{%>
 			<%- include('./partials/header')  %> 
@@ -27,22 +27,27 @@
 							<h2 class="products-title">Novedades</h2>
 						</div class="fotos">
 						<!-- Show the "ultimos" products -->
-						<% for (let i=0; i<producto.length; i++) {%>
-					<div>
-						<article class="col-12 col-lg-8 product-detail-info">
-							<img src="<%= producto[i].imagen %>" alt="" class="product-detail-img">
-							<p class="product-detail-description">
-								<%= producto.descripcion %>
-							</p>
-							<p class="product-detail-description">
-								<%= producto[i].autor %>
-							</p>
-						</article>
-					<% } %>
+						
+						<% for (let i=0; i<producto.length; i++) {%> 
+						<div class="col-12 col-sm-6 col-lg-3">
+							<section class="product-box">
+								<figure class="product-box_image">
+									<img src="/public/images/<%=producto[i].imagen%>" alt="foto producto">
+								</figure>
+								<article class="product-box_data">
+									<h2 class="producto"> <a href="/views/product.ejs/<%= producto[i].nombre %>" <%= producto[i].nombre %> ></a>  </h2>
+									<p> <%= producto[i].descripcion %> </p>
+									<p> Cantidad de comentarios: <%= producto[i].comentario.length %> </p>
+									<p> <a href="/views/profile.ejs/<%= producto.usuarioId.id %> "> Subido por: <%= producto[i].usuarioId.nombre %> </a></p>
 
-					</div>
-					</div>
-					<!-- /Novedades -->
+
+								</article>
+
+							</section>
+						</div>
+						<% } %> 
+						
+						<!-- /Novedades -->
 
 
 

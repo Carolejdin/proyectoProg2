@@ -18,9 +18,9 @@ module.exports = (sequelize, dataTypes) => {
             type:dataTypes.INTEGER
     
         },
-        // productId: {
-        //     type:dataTypes.INTEGER
-        // },
+        productId: {
+            type:dataTypes.INTEGER
+        },
         createdAt : {
             type: dataTypes.DATE,
             allowNull: true

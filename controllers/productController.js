@@ -3,19 +3,17 @@ const db = require('../database/models/index');
 const op = db.Sequelize.Op;
 const products = db.Product;
 
-
-
 const productController = {
   //resultados de busqueda
  showProduct: function (req,res){
-  let producto ={
+  let producto = {
     nombre: req.body.nombre,
     descripcion: req.body.descripcion,
     anioDePublicacion: req.body.anioDePublicacion,
     autor: req.body.autor,
     comentario: req.body.comentario, 
     editorial: req.body.editorial,
-    //imagen: req.file.filename
+    imagen: req.file.fieldename
   }
   return res.render('product', { producto : producto });
  },
@@ -55,21 +53,23 @@ const productController = {
 //datos del formularioo
 //mostrar el form de agregar producto
     },
-showProductAdd: function (req,res){
-  return res.render('productAdd')
-},
+    
+    showProductAdd: function (req,res){
+      return res.render('productAdd')
+    
+    },
 //guarda la info de agregar producto
-store: function (req,res){
+  store: function (req,res){
   // res.send(req.file)
   console.log(req.session)
-let producto ={
+  let producto ={
   nombre: req.body.nombre,
   descripcion: req.body.descripcion,
   anioDePublicacion: req.body.anioDePublicacion,
   autor: req.body.autor,
   comentario: req.body.comentario, 
   editorial: req.body.editorial,
-  imagen: req.file.filename,
+  imagen: req.file.fieldname,
   usuarioId:req.session.user.id
 }
 
@@ -108,6 +108,15 @@ update: function (req,res){
     res.send(error)
   })
 },
+
+  comentarios: function(req, res){
+    let comentario = {
+      comentario : req.body.comentario,
+      productId : req.params.id,
+      usuarioId : req.session.user.id,
+
+    }
+  }
 
 }
 module.exports = productController;
