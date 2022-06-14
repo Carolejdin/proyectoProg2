@@ -18,9 +18,10 @@ var upload = multer({ storage: storage })
 //aca van los sufijos
 //router.get('/productAdd', controller.productAdd);
 //mostrar los productos
+
 router.get('/searchResults', controller.searchResults);
 //router.post('/ProductAdd', controller.showForm)
-//router.get('/:id', controller.product);
+router.get('/', controller.showProduct);
 router.get ('/productAdd', controller.showProductAdd)
 
 router.post('/store', upload.single('imagen'), controller.store);

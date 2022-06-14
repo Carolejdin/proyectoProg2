@@ -7,6 +7,18 @@ const products = db.Product;
 
 const productController = {
   //resultados de busqueda
+ showProduct: function (req,res){
+  let producto ={
+    nombre: req.body.nombre,
+    descripcion: req.body.descripcion,
+    anioDePublicacion: req.body.anioDePublicacion,
+    autor: req.body.autor,
+    comentario: req.body.comentario, 
+    editorial: req.body.editorial,
+   // imagen: req.file.filename
+  }
+  return res.render('product', { producto : producto });
+ },
   searchResults: function (req, res) {
     //return res.send('hola')
     let palabraBuscada = req.query.search
@@ -32,7 +44,7 @@ const productController = {
 
       })
       .catch(error => console.log(error))
-    },
+    
     //showForm: function (req, res) {
     //  if (req.session.user != undefined){
      //   return res.redirect('productAdd')
@@ -42,6 +54,7 @@ const productController = {
 //}
 //datos del formularioo
 //mostrar el form de agregar producto
+    },
 showProductAdd: function (req,res){
   return res.render('productAdd')
 },

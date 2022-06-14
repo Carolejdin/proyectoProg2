@@ -23,30 +23,13 @@
 						<article class="col-12 col-lg-8 product-detail-info">
 							<img src="<%= producto.imagen %>" alt="" class="product-detail-img">
 							<p class="product-detail-description">
-								<%= listaProduct[id].descripcion %>
+								<%= producto.descripcion %>
 							</p>
-						</article>
+						
 
-						<div class="col-12 col-lg-4">
-							<% for (let i=0; i< comentarios.length; i++) {%>
-								<section class="comments">
-									<article>
-										<img src="https://via.placeholder.com/35" alt="">
-										<div class="data">
-											<p class="user">
-												<strong> <a href="/users/profile">
-														<%=comentarios[i].nombre%>
-													</a> </strong>
-												<%=comentarios[i].texto%>
-											</p>
-										</div>
+						
 
-									</article>
-									<% } %>
-									
-								</section>
-
-						</div>
+						
 
 					</div>
 
