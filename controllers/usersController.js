@@ -5,16 +5,44 @@ const users = db.User;
 
 const usersController = {
     profile: function (req, res) {
-        res.render('profile', {
-            listaUsuarios: data.usuarios,
-            listaProductos: libros.productos
-        });
+        
+        users.findByPk(req.params.id)
+        .then(function(results){
+            let profile = {
+                username : results.username,
+                email : results.email,
+                profilePic : results.profilePic,
+
+            }
+            return res.render('profile', {profile : profile})
+        }).catch(error => console.log(error))
+
     },
     profileEdit: function (req, res) {
-        res.render('profileEdit', {
-            listaUsuarios: data.usuarios
+        return res.render('profileEdit', {
+            users : users
+            
         });
     },
+    updateProfile: function (req, res){
+        let usuario = {
+            email : req.body.email,
+            username : req.body.username,
+            profilePic : req.file.filename,
+         }
+         let filtro = {
+            where: {id : req.params.id }
+         }
+         users.update(usuario, filtro)
+         .then(function (results)
+            {
+                return res.redirect('/profile')
+            }
+            .catch(error => console.log(error))
+         )
+    },
+
+
     create: function (req, res) {
         //mostrar el form de registro
         //Controlar que el usario no esté logueado
