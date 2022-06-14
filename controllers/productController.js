@@ -61,6 +61,7 @@ showProductAdd: function (req,res){
 //guarda la info de agregar producto
 store: function (req,res){
   // res.send(req.file)
+  console.log(req.session)
 let producto ={
   nombre: req.body.nombre,
   descripcion: req.body.descripcion,
@@ -69,7 +70,7 @@ let producto ={
   comentario: req.body.comentario, 
   editorial: req.body.editorial,
   imagen: req.file.filename,
-  id:req.session.user.id
+  usuarioId:req.session.user.id
 }
 
 db.Product.create(producto)

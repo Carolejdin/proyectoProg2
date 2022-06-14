@@ -33,6 +33,10 @@ module.exports = (sequelize, dataTypes) => {
         comentario: {
             type:dataTypes.STRING,
         },
+        usuarioId:{
+            type:dataTypes.STRING,
+        },
+
         createdAt : {
             type: dataTypes.DATE,
             allowNull: true
