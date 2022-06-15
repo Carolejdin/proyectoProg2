@@ -105,7 +105,7 @@ detalleProducto: function (req, res) {
 })
 },
 showEdit: function(req,res){
-
+res.render('productEdit')
 },
 edit: function (req,res){
   db.Product.findByPk(req.params.id)
@@ -116,9 +116,7 @@ edit: function (req,res){
     res.send(error)
   })
 },
-showDelete: function (req,res){
 
-},
 
 delete: function (req,res){
   bd.Product.destroy({were: {id: req.params.id}})

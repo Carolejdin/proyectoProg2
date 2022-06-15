@@ -18,7 +18,7 @@ var upload = multer({ storage: storage })
 
 //agregar producto
 router.get ('/productAdd', controller.showForm)
-router.post ('/productAdd', upload.single('imagen'), controller.nuevoProducto);
+router.post ('/', upload.single('imagen'), controller.nuevoProducto);
 
 //comentarios
 router.post ('/:id/comentar', controller.comentarios);
@@ -33,7 +33,7 @@ router.get ('/productEdit', controller.showEdit);
 
 
 //eliminar productos
-router.get('/productAdd', controller.showDelete);
+
 router.post ('/productAdd', controller.delete);
 
 
