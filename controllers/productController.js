@@ -13,7 +13,7 @@ const productController = {
     autor: req.body.autor,
     comentario: req.body.comentario, 
     editorial: req.body.editorial,
-    imagen: req.file.fieldename
+    imagen: req.file.filename
   }
   return res.render('product', { producto : producto });
  },
@@ -69,7 +69,7 @@ const productController = {
   autor: req.body.autor,
   comentario: req.body.comentario, 
   editorial: req.body.editorial,
-  imagen: req.file.fieldname,
+  imagen: req.file.filename,
   usuarioId:req.session.user.id
 }
 
