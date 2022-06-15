@@ -18,37 +18,51 @@
 
 		<!-- Datos del usuario -->
 		<section class="info-usuario container products-wrapper">
-			
 				<div class="row">
 					<div class="img-container offset-3 col-2">
-						<img src="/images/products/fotoperfil.png" alt="foto de perfil" class="foto-perfil">
+						<img src="/images/<%= users.dataValues.profilePic%> " alt="foto de perfil" class="foto-perfil">
 					</div>
 					<div class="data-container col-6">
 						<div class="d-flex align-items-center ">
-							<h1 class="main-title">
-								<%=profile.username %>
-									<a href="/users/profileEdit">
-										<i class="fas fa-cog"></i>
-									</a>
-							</h1>
-							<h1 class="main-title">
-								<%=profile.email %>
-									<a href="/users/profileEdit">
-
-									</a>
-							</h1>
-							<a class="btn mt-3 ml-4" href="">SEGUIR</a>
+							<h1 class="main-title"><%= users.dataValues.username %> </h1>
+								<%=profile.users.username %>  
+								<% if (locals.user)%>
+								<% if(locals.user.username == users.dataValues.username){ %> 
+									<a href="/users/profileEdit">Editar mi perfil <i class="fas fa-cog"></i></a>
+								<% } else { %> 
+									<a href="/users/profile"></a>
+									<form action="/users/seguir/ <%= users.dataValues.id %> " method="post">
+									<button class="btn mt-3 ml-4" type="submit" name="seguir">Seguir</button>
+									<% } %>
+									<%  else { %> 
+										<a href="/users/profile"></a> 
+									<% } %> 	
+									</form>
+				
 						</div>
 						<div>
 							<ul class="">
-								<li>8 productos</li>
-								<li>200 seguidores</li>
-								<li>300 comentarios</li>
+								<h4><%= users.dataValues.email %> </h4>
+								<% if(producto.length >0) { %> 
+									<li>Productos: <%= producto.length %> </li>
+									<% for (let i=0 ; i < producto.length; i++) { %> 
+									<li> <a href="/product/<%=producto[i].dataValues.nombre %> "><%= producto[i].dataValues.nombre %></a></li>
+									<% } %> 
+									<% } else { %> 
+									<li>Producto: No ha publicado productos aún</li>
+									<% } %> 
+									<li>Seguidores: <%= seguidores.length %> </li>
+									<% if (comentarios.length > 0) {%>
+									<li> COmentarios: <%= comentarios.length %> </li>
+									<% } else { %> 
+										<li> Comentarios: No ha hecho comentarios aún</li>
+										<% } %> 
+					
 							</ul>
 						</div>
 					</div>
 				</div>
-			
+				
 		</section>
 		<!-- /Datos del usuario -->
 

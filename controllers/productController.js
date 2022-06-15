@@ -48,7 +48,7 @@ const productController = {
     }
 
 let producto ={
-  nombre: req.body.nombre,
+    nombre: req.body.nombre,
     descripcion:req.body.descripcion,
     anioDePublicacion:req.body.anioDePublicacion,
     autor:req.body.autor,

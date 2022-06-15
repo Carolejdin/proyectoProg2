@@ -25,7 +25,7 @@ router.post ('/:id/comentar', controller.comentarios);
 router.get ('/:id/comentar', controller.showComment);
 
 //detalle de producto
-router.get ('/', controller.detalleProducto);
+router.get ('/:id', controller.detalleProducto);
 
 //editar producto
 router.post ('/productEdit', controller.edit);

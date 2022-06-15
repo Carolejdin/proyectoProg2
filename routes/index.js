@@ -19,6 +19,8 @@ var upload = multer({ storage: storage })
 router.get('/', controller.index);
 router.get('/searchResults', controller.searchResults);
 router.get('/login', controller.login);
+
+
 //router.post('/', upload.single('imagen'), controller.index);
 //router.get('/', controller.comentarios)
 

@@ -2,22 +2,38 @@ const db = require('../database/models');
 const bcrypt = require('bcryptjs');
 
 const users = db.User;
+const producto = db.Product;
+const seguidores = db.Follower;
+const comentarios = db.Comentario;
 
 const usersController = {
-    profile: function (req, res) {
-        
-        users.findByPk(req.params.id)
-        .then(function(results){
-            let profile = {
-                username : users.username,
-                email : users.email,
-                profilePic : users.profilePic,
+    profile: function(req, res){
+        producto.findAll({
+            where: [{id: req.params.user.id}],
+        })
+            .then(function(producto){
+                users.findOne({
+                    where: [{id: req.params.user.id}],
+                })
+                .then(function(users){
+                    seguidores.findAll({
+                        where: [{seguido: req.params.user.id}]
+            })
+              .then(function(seguidores){
+                            comentarios.findAll({
+                                include: [{association: "user"}],
+                                where: [{usuarioId: req.params.user.id}]
+                            })
+                            .then(function(comentarios){
+                                return res.render('profile', {users : users, producto : producto, seguidores : seguidores, comentarios : comentarios})
+                            })
 
-            }
-            return res.render('profile', {profile : profile})
-        }).catch(error => console.log(error))
+                          })
 
+                     }).catch(error => console.log(error))
 
+                }).catch(error => console.log(error))
+                
     },
 
     profileEdit: function (req, res) {
@@ -26,7 +42,8 @@ const usersController = {
             
         });
     },
-   updateProfile: function(req, res){
+
+    updateProfile: function(req, res){
     req.body.password=bcrypt.hashSync(req.body.password, 10)
     if (req.file) req.body.profilePic = (req.file.path).replace('public', '');
     db.User.update(req.body,{where: {id: req.session.user.id}})
