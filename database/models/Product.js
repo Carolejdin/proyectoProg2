@@ -36,7 +36,6 @@ module.exports = (sequelize, dataTypes) => {
         usuarioId:{
             type:dataTypes.STRING,
         },
-
         createdAt : {
             type: dataTypes.DATE,
             allowNull: true
