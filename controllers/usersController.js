@@ -9,38 +9,39 @@ const usersController = {
         users.findByPk(req.params.id)
         .then(function(results){
             let profile = {
-                username : results.username,
-                email : results.email,
-                profilePic : results.profilePic,
+                username : users.username,
+                email : users.email,
+                profilePic : users.profilePic,
 
             }
             return res.render('profile', {profile : profile})
         }).catch(error => console.log(error))
 
+
     },
+
     profileEdit: function (req, res) {
         return res.render('profileEdit', {
             users : users
             
         });
     },
-    updateProfile: function (req, res){
-        let usuario = {
-            email : req.body.email,
-            username : req.body.username,
-            profilePic : req.file.filename,
-         }
-         let filtro = {
-            where: {id : req.params.id }
-         }
-         users.update(usuario, filtro)
-         .then(function (results)
-            {
-                return res.redirect('/profile')
+   updateProfile: function(req, res){
+    req.body.password=bcrypt.hashSync(req.body.password, 10)
+    if (req.file) req.body.profilePic = (req.file.path).replace('public', '');
+    db.User.update(req.body,{where: {id: req.session.user.id}})
+        .then(function(data){
+            if (req.file){
+                req.session.user.profilePic = req.body.profilePic
             }
-            .catch(error => console.log(error))
-         )
-    },
+            res.redirect('/')
+        })
+
+        .catch(function(error){
+            res.send(error)
+        })
+
+   },
 
 
     create: function (req, res) {
