@@ -24,7 +24,7 @@ module.exports = (sequelize, dataTypes) => {
             allowNull:false
         },
         dni: {
-            type: dataTypes.STRING,
+            type: dataTypes.INTEGER,
             allowNull:false  
         },
         profilePic: {
@@ -51,29 +51,29 @@ module.exports = (sequelize, dataTypes) => {
     }
     const User = sequelize.define(alias, cols, config)    
 
-//RELACIONES ACA
-User.associate = function (models){
-   
-    User.hasMany(models.Product, {
-        foreignKey: 'productId',
-        as: 'products'
-    }),
-   User.hasMany(models.Comentario, {
-            foreignKey: 'userId',
+    //RELACIONES ACA
+    User.associate = function (models){
+    
+        User.hasMany(models.Product, {
+            foreignKey: 'usuarioId',
+            as: 'products'
+        });
+        User.hasMany(models.Comentario, {
+            foreignKey: 'usuarioId',
             as: 'comentarios'
-        } ),
-    User.belongsToMany(models.User, {
-        as: 'seguido',
-        through: 'seguidores',
-        foreignKey:'seguidorId',
-        timestamps: true
- }),
- User.belongsToMany(models.User, {
-    as: 'seguidor',
-    through: 'seguidores',
-    foreignKey:'seguidorId',
-    timestamps: true
-})
+        });
+        User.belongsToMany(models.User, {
+            as: 'seguido',
+            through: 'seguidores',
+            foreignKey:'seguidorId',
+            timestamps: true
+        });
+        User.belongsToMany(models.User, {
+            as: 'seguidor',
+            through: 'seguidores',
+            foreignKey:'seguidorId',
+            timestamps: true
+        });
     }
 
 

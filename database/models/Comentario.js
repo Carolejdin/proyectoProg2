@@ -39,19 +39,19 @@ module.exports = (sequelize, dataTypes) => {
         tableName: "comentarios",
         timestamps: true
     }
-    const  Comentario = sequelize.define(alias, cols, config)    
+const  Comentario = sequelize.define(alias, cols, config)    
 
 //RELACIONES ACA
-Comentario.associate = function (models){
-    Comentario.belongsTo(models.Product,{
-        foreignKey: 'productsId',
-        as: 'products'
-    } );
-    Comentario.belongsTo(models.User, {
-        foreignKey: 'UsuarioId',
-        as: 'users'
-    })
-}
+// Comentario.associate = function (models){
+//     Comentario.belongsTo(models.Product,{
+//         foreignKey: 'productId',
+//         as: 'product'
+//     } );
+//     Comentario.belongsTo(models.User, {
+//         foreignKey: 'usuarioId',
+//         as: 'user'
+//     })
+// }
 
 
     return Comentario;

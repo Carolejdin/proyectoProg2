@@ -34,7 +34,7 @@ module.exports = (sequelize, dataTypes) => {
             type:dataTypes.STRING,
         },
         usuarioId:{
-            type:dataTypes.STRING,
+            type:dataTypes.INTEGER,
         },
         createdAt : {
             type: dataTypes.DATE,
@@ -47,7 +47,7 @@ module.exports = (sequelize, dataTypes) => {
         deletedAt :{
             type: dataTypes.DATE,
             allowNull: true
-        }
+        },
     
     }
     let config = {
@@ -60,10 +60,11 @@ module.exports = (sequelize, dataTypes) => {
 Product.associate = function (models) {
     Product.belongsTo (models.User,{
         foreignKey: 'usuarioId',
-        as: 'users'
+        as: 'user'
     } );
+    
     Product.hasMany (models.Comentario,{
-        foreignKey: 'comentarioId',
+        foreignKey: 'productId',
         as: 'comentarios'
     } );
 }
