@@ -4,91 +4,109 @@ const op = db.Sequelize.Op;
 const products = db.Product;
 
 const productController = {
-  //resultados de busqueda
- showProduct: function (req,res){
-  let producto = {
-    nombre: req.body.nombre,
-    descripcion: req.body.descripcion,
-    anioDePublicacion: req.body.anioDePublicacion,
-    autor: req.body.autor,
-    comentario: req.body.comentario, 
-    editorial: req.body.editorial,
-    imagen: req.file.fieldename
-  }
-  return res.render('product', { producto : producto });
- },
-  searchResults: function (req, res) {
-    //return res.send('hola')
-    let palabraBuscada = req.query.search
-    
-
-    let condicion ={ 
-      where: [
-        { nombre: 'carol' },
-        // { nombre: { [op.like]: "%" + palabraBuscada + "%"  } },
-        // { descripcion: { [op.like]: "%" + palabraBuscada + "%" } }
-      ]
+  showForm: function (req, res) {
+    if (req.session.user != undefined){
+    return res.render('productAdd')
+     } else {
+         return res.redirect('/users/register')
+       }
+      },
+  nuevoProducto: function (req, res) {
+    let errores = { message: "" }
+    if (req.body.nombre == '') {
+        errores.message = 'Completar el campo nombre';
     }
-    //console.log(db.models);
-    //return res.send('asdasd')
-    products.findAll()
-     .then(function(resultados) {
-       return res.send(resultados)
-        if (resultados!= "") {
-          return res.render('searchResults', { search: palabraBuscada})
-        } else {
-          res.send('no se encontraron resultados')
-        }
+    else if (req.body.descripcion == '') {
+        errores.message = errores.message + 'Completar el campo descripcion';
 
-      })
-      .catch(error => console.log(error))
-    
-    //showForm: function (req, res) {
-    //  if (req.session.user != undefined){
-     //   return res.redirect('productAdd')
-    //  } else {
-     //   return res.redirect('register')
-     // }
-//}
-//datos del formularioo
-//mostrar el form de agregar producto
-    },
-    
-    showProductAdd: function (req,res){
-      return res.render('productAdd')
-    
-    },
-//guarda la info de agregar producto
-  store: function (req,res){
-  // res.send(req.file)
-  console.log(req.session)
-  let producto ={
+    }
+    else if (req.body.anioDePublicacion == '') {
+        errores.message = errores.message + 'Completar el campo año de publicacion';
+
+    }
+
+    else if (req.body.autor == '') {
+        errores.message = errores.message + 'Completar el campo autor';
+    }
+
+    else if (req.body.comentario == '') {
+        errores.message = errores.message + 'Completar el campo comentario';
+
+    }
+
+    else if (req.body.editorial == '') {
+        errores.message = errores.message + 'Completar el campo editorial';
+    }
+
+    else if (req.file == undefined) {
+        errores.message = errores.message + 'Agregar imagen';
+
+    }
+    else if  (errores.message.length > 0) {
+        res.locals.errores = errores;
+        return res.render('productAdd');
+    }
+
+let producto ={
   nombre: req.body.nombre,
-  descripcion: req.body.descripcion,
-  anioDePublicacion: req.body.anioDePublicacion,
-  autor: req.body.autor,
-  comentario: req.body.comentario, 
-  editorial: req.body.editorial,
-  imagen: req.file.fieldname,
-  usuarioId:req.session.user.id
+    descripcion:req.body.descripcion,
+    anioDePublicacion:req.body.anioDePublicacion,
+    autor:req.body.autor,
+    imagen: req.file.filename,
+    comentario: req.body.comentario,
+    editorial: req.body.editorial,
+    usuarioId:req.session.user.id 
 }
-
-db.Product.create(producto)
-  .then((results) => {return res.render('index', {producto : producto}) })
-  .catch ((error) => {return res.send ('Hay un error' + error)})
-},
-//elimina producto
-delete: function (req,res){
-  bd.Product.destroy ({were: {id: req.params.id}})
-  .then(function(Product){
-    res.redirect('/')
-  })
-  .catch(function(error){
-    res.send(error)
-  })
+products.create (producto)
+        
+        .then(function (results) {
+            return res.redirect('/')
+        })
+        .catch(error => console.log(error))
 
 },
-//edita el producto
+showComment: function(req,res){
+  if (req.session.user != undefined){
+    return res.redirect('/product')
+     } else {
+         return res.redirect('/users/register')
+       }
+},
+comentarios: function(req,res){
+let comentario = {
+    comentario : req.body.comentario,
+    productId : req.params.id,
+    usuarioId : req.session.user.id,
+  }
+  db.Comentario.create (comentario)
+            .then(function () {
+            return res.redirect('/product')
+        })
+        .catch(error => console.log(error))
+},
+detalleProducto: function (req, res) {
+  console.log(req.params);
+  var id = req.params.idProducto
+  console.log(id)
+
+  products.findByPk(id,{
+      include: [{association: 'users'}, {association: 'comentarios', include: [{association: 'users'}]}]
+  })
+  .then((producto) => {
+      console.log(producto)
+      return res.render('product',{
+          productos : producto,
+          comentarios: [],
+      });
+  })
+.catch((error) => {
+  console.log(error)
+  return res.send(error);
+})
+},
+showEdit: function(req,res){
+
+},
 edit: function (req,res){
   db.Product.findByPk(req.params.id)
   .then(function(Product){
@@ -98,25 +116,18 @@ edit: function (req,res){
     res.send(error)
   })
 },
-//guarda la info del edit
-update: function (req,res){
-  db.Product.update(req.body, {where: {id: req.params.id}})
+showDelete: function (req,res){
+
+},
+
+delete: function (req,res){
+  bd.Product.destroy({were: {id: req.params.id}})
   .then(function(Product){
-    res.redirect('/');
+    res.redirect('/')
   })
   .catch(function(error){
     res.send(error)
   })
 },
-
-  comentarios: function(req, res){
-    let comentario = {
-      comentario : req.body.comentario,
-      productId : req.params.id,
-      usuarioId : req.session.user.id,
-
-    }
-  }
-
 }
-module.exports = productController;
+module.exports=productController
