@@ -2,6 +2,7 @@
 //const libros = require('../db/data');
 const bcrypt = require('bcryptjs');
 const db = require('../database/models');
+const op = db.Sequelize.Op;
 const products = db.Product
 //un metodo para cada request
 const indexController = {

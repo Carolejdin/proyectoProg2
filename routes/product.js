@@ -18,7 +18,7 @@ var upload = multer({ storage: storage })
 
 //agregar producto
 router.get ('/productAdd', controller.showForm)
-router.post ('/', upload.single('imagen'), controller.nuevoProducto);
+router.post ('/productAdd', upload.single('imagen'), controller.nuevoProducto);
 
 //comentarios
 router.post ('/:id/comentar', controller.comentarios);

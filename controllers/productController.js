@@ -90,7 +90,7 @@ detalleProducto: function (req, res) {
   console.log(id)
 
   products.findByPk(id,{
-      include: [{association: 'users'}, {association: 'comentarios', include: [{association: 'users'}]}]
+      include: [{association: 'user'}, {association: 'comentarios', include: [{association: 'user'}]}]
   })
   .then((producto) => {
       console.log(producto)
