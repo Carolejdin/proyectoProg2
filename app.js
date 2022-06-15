@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var productRouter = require('./routes/product');
 
 const session = require('express-session');
+const db = require('./database/models');
 
 
 var app = express();
@@ -22,20 +23,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-/* app.use(function(req, res, next){
-  res.locals.usuarioLogueado = {
-    username : username
-  }
-}
+// app.use(function(req, res, next){
+//   res.locals.user = {
+//     username : req.session.username
+//   }
+//   return next ()
+// })
 
-)
-app.use(function(req, res, next){
-  if (req.session.usuarioLogueado != undefined) {
-    res.locals.user = req.session.usuarioLogueado
-  }
-  return next()
-})
- */
+app.use(session({
+  secret: "books_db",
+  resave: false,
+  saveUninitialized: true,
+}));
 
 app.use(function(req, res, next) {
   if (req.cookies.userId != undefined && req.session.user == undefined) {
@@ -55,11 +54,12 @@ app.use(function(req, res, next) {
   }
 })
 
-app.use(session({
-  secret: "books_db",
-  resave: false,
-  saveUninitialized: true,
-}));
+app.use(function(req, res, next){
+  if (req.session.user != undefined) {
+    res.locals.user = req.session.user
+  }
+  return next()
+})
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
