@@ -32,8 +32,9 @@ const indexController = {
             {descripcion: {[op.like]: "%" + palabraBuscada + "%"}}]
         })
         .then((data) => {
-            if (data == true) {
-                return res.render('searchResults', { search: palabraBuscada})
+          
+     if (data.length>0) {
+    return res.render('searchResults', { search: palabraBuscada})
             } else {
                 res.send('no se encontraron resultados')
               }
