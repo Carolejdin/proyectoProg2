@@ -8,78 +8,86 @@
 
 <body>
 	<!-- Header -->
-	<% if (locals.user != undefined) { %>
-		<%- include('./partials/headerLogueado')  %> 
-<% } else{%>
-		<%- include('./partials/header')  %> 
-<% } %>
+	<% if (locals.user != null) { %>
+	<%- include('./partials/headerLogueado')  %>
+	<% } else{%>
+	<%- include('./partials/header')  %>
+	<% } %>
 
-		<!-- /Header -->
+	<!-- /Header -->
 
-		<!-- Datos del usuario -->
-		<section class="info-usuario container products-wrapper">
-				<div class="row">
-					<div class="img-container offset-3 col-2">
-						<img src="/images/<%= users.dataValues.profilePic%> " alt="foto de perfil" class="foto-perfil">
-					</div>
-					<div class="data-container col-6">
-						<div class="d-flex align-items-center ">
-							<h1 class="main-title"><%= users.dataValues.username %> </h1>
-								<%=profile.users.username %>  
-								<% if (locals.user)%>
-								<% if(locals.user.username == users.dataValues.username){ %> 
-									<a href="/users/profileEdit">Editar mi perfil <i class="fas fa-cog"></i></a>
-								<% } else { %> 
-									<a href="/users/profile"></a>
-									<form action="/users/seguir/ <%= users.dataValues.id %> " method="post">
-									<button class="btn mt-3 ml-4" type="submit" name="seguir">Seguir</button>
-									<% } %>
-									<%  else { %> 
-										<a href="/users/profile"></a> 
-									<% } %> 	
-									</form>
-				
-						</div>
-						<div>
-							<ul class="">
-								<h4><%= users.dataValues.email %> </h4>
-								<% if(producto.length >0) { %> 
-									<li>Productos: <%= producto.length %> </li>
-									<% for (let i=0 ; i < producto.length; i++) { %> 
-									<li> <a href="/product/<%=producto[i].dataValues.nombre %> "><%= producto[i].dataValues.nombre %></a></li>
-									<% } %> 
-									<% } else { %> 
-									<li>Producto: No ha publicado productos aún</li>
-									<% } %> 
-									<li>Seguidores: <%= seguidores.length %> </li>
-									<% if (comentarios.length > 0) {%>
-									<li> COmentarios: <%= comentarios.length %> </li>
-									<% } else { %> 
-										<li> Comentarios: No ha hecho comentarios aún</li>
-										<% } %> 
-					
-							</ul>
-						</div>
-					</div>
+	<!-- Datos del usuario -->
+	<section class="info-usuario container products-wrapper">
+		<div class="row">
+			<div class="img-container offset-3 col-2">
+				<img src="/images/<%= users.dataValues.profilePic%> " alt="foto de perfil" class="foto-perfil">
+			</div>
+			<div class="data-container col-6">
+				<div class="d-flex align-items-center ">
+					<h1 class="main-title"><%= users.dataValues.username %> </h1>
+					<% if(locals.user && locals.user.username != users.dataValues.username){ %>
+						<a href="/users/profile"></a>
+						<form action="/users/seguir/ <%= users.dataValues.id %> " method="post">
+							<button class="btn mt-3 ml-4" type="submit" name="seguir">Seguir</button>
+						</form>
+					<% } %>
 				</div>
-				
-		</section>
-		<!-- /Datos del usuario -->
+				<div>
+					<ul class="">
+						<h4><%= users.dataValues.email %> </h4>
+						<% if(producto.length >0) { %>
+						<li>Productos: <%= producto.length %> </li>
+						<% } else { %>
+						<li>Producto: No ha publicado productos aún</li>
+						<% } %>
+						<li>Seguidores: <%= seguidores.length %> </li>
+						<% if (comentarios.length > 0) {%>
+						<li> COmentarios: <%= comentarios.length %> </li>
+						<% } else { %>
+						<li> Comentarios: No ha hecho comentarios aún</li>
+						<% } %>
 
-		<!-- Mis productos -->
-		<div class="container products-wrapper">
-			<div class="row">
-				<div class="col-12">
-					<h2 class="products-title">Mis productos</h2>
+					</ul>
 				</div>
-				<!-- Show mis productos -->
-				
-				
-		<!-- /Mis productos -->
+			</div>
+		</div>
+
+	</section>
+	<!-- /Datos del usuario -->
+
+	<!-- Mis productos -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Mis productos</h2>
+			</div>
+			<% for (let i=0; i<producto.length; i++) {%> 
+				<div class="col-12 col-sm-6 col-lg-3">
+					<section class="product-box">
+						<figure class="product-box_image">
+							<a href="/product/<%producto[i].id%>"><img src="/images/<%=producto[i].imagen%>" alt="foto producto"></a>
+							
+						</figure>
+						<article class="product-box_data">
+							<h2 class="producto"> <a href="/views/product.ejs/<%= producto[i].nombre %>" <%= producto[i].nombre %> ></a>  </h2>
+							<p> <%= producto[i].descripcion %> </p>
+							<p> Cantidad de comentarios: <%= producto[i].comentario.length %> </p>
+							<p> <a href="/views/profile.ejs/<%= producto[i].usuarioId.id %> "> Subido por: <%= producto[i].usuarioId.nombre %> </a></p>
 
 
-		<!-- footer -->
-		<%- include('./partials/footer') %>
+						</article>
+
+					</section>
+				</div>
+			<% } %> 
+			<!-- Show mis productos -->
+
+
+			<!-- /Mis productos -->
+
+
+			<!-- footer -->
+			<%- include('./partials/footer') %>
 			<!-- /footer -->
 </body>
 

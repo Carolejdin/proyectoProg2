@@ -7,58 +7,66 @@ const seguidores = db.Follower;
 const comentarios = db.Comentario;
 
 const usersController = {
-    profile: function(req, res){
-        producto.findAll({
-            where: [{id: req.params.user.id}],
-        })
-            .then(function(producto){
-                users.findOne({
-                    where: [{id: req.params.user.id}],
+    profile: function (req, res) {
+        users.findOne({
+                where: [{
+                    id: req.query.userId
+                }],
+            }).then(async function (user) {
+                const userProducts = await producto.findAll({
+                    where: [{
+                        id: req.query.userId
+                    }],
                 })
-                .then(function(users){
-                    seguidores.findAll({
-                        where: [{seguido: req.params.user.id}]
+                const userSeguidores = await seguidores.findAll({
+                    where: [{
+                        seguido: req.query.userId
+                    }]
+                })
+                const userComentarios = await comentarios.findAll({
+                    //include: [{association: "user"}],
+                    where: [{
+                        usuarioId: req.query.userId
+                    }]
+                })
+                return res.render('profile', {
+                    users: user,
+                    producto: userProducts,
+                    seguidores: userSeguidores,
+                    comentarios: userComentarios
+                })
             })
-              .then(function(seguidores){
-                            comentarios.findAll({
-                                include: [{association: "user"}],
-                                where: [{usuarioId: req.params.user.id}]
-                            })
-                            .then(function(comentarios){
-                                return res.render('profile', {users : users, producto : producto, seguidores : seguidores, comentarios : comentarios})
-                            })
-
-                          })
-
-                     }).catch(error => console.log(error))
-
-                }).catch(error => console.log(error))
-                
+            .catch(function (error) {
+                console.log(error)
+            })
     },
 
     profileEdit: function (req, res) {
         return res.render('profileEdit', {
-            users : users
-            
+            users: users
+
         });
     },
 
-    updateProfile: function(req, res){
-    req.body.password=bcrypt.hashSync(req.body.password, 10)
-    if (req.file) req.body.profilePic = (req.file.path).replace('public', '');
-    db.User.update(req.body,{where: {id: req.session.user.id}})
-        .then(function(data){
-            if (req.file){
-                req.session.user.profilePic = req.body.profilePic
-            }
-            res.redirect('/')
-        })
-
-        .catch(function(error){
-            res.send(error)
-        })
-
-   },
+    updateProfile: function (req, res) {
+        req.body.password = bcrypt.hashSync(req.body.password, 10)
+        if (req.file) req.body.profilePic = (req.file.path).replace('public', '');
+        db.User.update(req.body, {
+                where: {
+                    id: req.session.user.id
+                }
+            })
+            .then(function (data) {
+                if (req.file) {
+                    req.session.user.profilePic = req.body.profilePic
+                }
+                res.redirect('/')
+            })
+            .catch(function (error) {
+                console.log(error)
+                res.send(error)
+            })
+    },
 
 
     create: function (req, res) {
@@ -121,6 +129,7 @@ const usersController = {
                         .then(function (userGuardado) { //En el parámetro recibimos el registro que se acaba de crear en la base de datos.
                             //return res.send(userGuardado)
                             //redirigir
+                            req.session.user = userGuardado.dataValues;
                             return res.redirect('/')
                         })
                         .catch(error => console.log(error))
@@ -175,14 +184,14 @@ const usersController = {
                 return res.render('login');
             })
     },
-    logout: function (req,res){
+    logout: function (req, res) {
         req.session.destroy();
-        if(req.cookies.userId !== undefined){
+        if (req.cookies.userId !== undefined) {
             res.clearCookie('userId')
         }
         return res.redirect('/')
     }
-     
+
 
 
 

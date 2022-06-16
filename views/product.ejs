@@ -3,52 +3,43 @@
 <!-- Include Head -->
 
 
-<%- include('./partials/head') %> 
+<%- include('./partials/head') %>
 
-	<body>
-		<% if (locals.user != undefined) { %>
-			<%- include('./partials/headerLogueado')  %> 
+<body>
+	<% if (locals.user != null) { %>
+	<%- include('./partials/headerLogueado')  %>
 	<% } else{%>
-			<%- include('./partials/header')  %> 
+	<%- include('./partials/header')  %>
 	<% } %>
-			<!-- product detail -->
-			<% for (let i=0; i<producto.length; i++) {%>
-			<div class="container products-wrapper">
-				<div class="d-flex align-items-center">
-					<h2 class="products-title">
-						<%= producto[i].nombre %>
-					</h2>
+	<!-- product detail -->
+	<div class="container products-wrapper">
+		<div class="d-flex align-items-center">
+			<h2 class="products-title">
+				<%= producto.nombre %>
+			</h2>
+			<p class="product-detail-description">
+				<a href="/product/productAdd">Agregar</a>
+			</p>
+		</div>
+		<div class="product-detail">
+			<div class="row">
+				<article class="col-12 col-lg-8 product-detail-info">
+					<img src="/images/<%=producto.imagen%>" alt="" class="product-detail-img">
 					<p class="product-detail-description">
-						<a href="/product/productAdd">Agregar</a>
+						<%= producto.descripcion %>
 					</p>
-				</div>
-				<div class="product-detail">
-					<div class="row">
-						<article class="col-12 col-lg-8 product-detail-info">
-							<img src="<%= producto[i].imagen %>" alt="" class="product-detail-img">
-							<p class="product-detail-description">
-								<%= producto[i].descripcion %>
-							</p>
-							<% } %>
-
-						
-
-						
-
-					</div>
-
-				</div>
-
 			</div>
+		</div>
+	</div>
 
-			<form class="form" action="/register" method="GET">
-				<input class="form-input" type="text" value="" placeholder="Agregar comentario">
-				<button type="submit" action="/register" class="buy-now-button">AGREGAR COMENTARIO</button>
-			</form>
-			<!-- /product detail -->
+	<form class="form" action="/register" method="GET">
+		<input class="form-input" type="text" value="" placeholder="Agregar comentario">
+		<button type="submit" action="/register" class="buy-now-button">AGREGAR COMENTARIO</button>
+	</form>
+	<!-- /product detail -->
 
-			<%- include('./partials/footer') %>
+	<%- include('./partials/footer') %>
 
-	</body>
+</body>
 
 </html>

@@ -32,14 +32,14 @@
 						<div class="col-12 col-sm-6 col-lg-3">
 							<section class="product-box">
 								<figure class="product-box_image">
-									<a href="/product/<%producto[i].id%>"><img src="/images/<%=producto[i].imagen%>" alt="foto producto"></a>
+									<a href="/product/<%=producto[i].id%>"><img src="/images/<%=producto[i].imagen%>" alt="foto producto"></a>
 									
 								</figure>
 								<article class="product-box_data">
-									<h2 class="producto"> <a href="/views/product.ejs/<%= producto[i].nombre %>" <%= producto[i].nombre %> ></a>  </h2>
+									<h2 class="producto"> <a href="/product/<%= producto[i].id %>"><%= producto[i].nombre %></a></h2>
 									<p> <%= producto[i].descripcion %> </p>
 									<p> Cantidad de comentarios: <%= producto[i].comentario.length %> </p>
-									<p> <a href="/views/profile.ejs/<%= producto[i].usuarioId.id %> "> Subido por: <%= producto[i].usuarioId.nombre %> </a></p>
+									<p> <a href="/users/profile?userId=<%= producto[i].usuarioId %> "> Subido por: <%= producto[i].usuarioId %> </a></p>
 
 
 								</article>
