@@ -32,9 +32,9 @@
 		</div>
 	</div>
 
-	<form class="form" action="/register" method="GET">
-		<input class="form-input" type="text" value="" placeholder="Agregar comentario">
-		<button type="submit" action="/register" class="buy-now-button">AGREGAR COMENTARIO</button>
+	<form class="form" action="/product/<%=producto.id%>" method="POST">
+		<input class="form-input" type="text" value="" placeholder="Agregar comentario" name="comentario">
+		<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 	</form>
 	<!-- /product detail -->
 

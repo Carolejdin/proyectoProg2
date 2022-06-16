@@ -41,17 +41,17 @@ module.exports = (sequelize, dataTypes) => {
     }
 const  Comentario = sequelize.define(alias, cols, config)    
 
-//RELACIONES ACA
-// Comentario.associate = function (models){
-//     Comentario.belongsTo(models.Product,{
-//         foreignKey: 'productId',
-//         as: 'product'
-//     } );
-//     Comentario.belongsTo(models.User, {
-//         foreignKey: 'usuarioId',
-//         as: 'user'
-//     })
-// }
+// RELACIONES ACA
+Comentario.associate = function (models){
+    Comentario.belongsTo(models.Product,{
+        foreignKey: 'productId',
+        as: 'product'
+    } );
+    Comentario.belongsTo(models.User, {
+        foreignKey: 'usuarioId',
+        as: 'user'
+    })
+}
 
 
     return Comentario;

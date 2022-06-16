@@ -71,36 +71,29 @@ const productController = {
       productId: req.params.id,
       usuarioId: req.session.user.id,
     }
+
     db.Comentario.create(comentario)
       .then(function () {
-        return res.redirect('/product')
+        return res.redirect('/product/' + req.params.id)
       })
       .catch(error => console.log(error))
   },
   detalleProducto: function (req, res) {
     products.findByPk(req.params.id, {
-        // include: [{
-        //   association: 'user'
-        // }, {
-        //   association: 'comentarios',
-        //   include: [{
-        //     association: 'user'
-        //   }]
-        // }]
+        include: [{
+          association: 'user'
+        }, {
+          association: 'comentarios',
+          include: [{
+            association: 'user'
+          }]
+        }]
       })
       .then((producto) => {
-        users.findOne({
-          where: [{
-              id: producto.usuarioId
-          }]
-        }).then(function(user) {
-          return res.render('product', {
-            producto: producto,
-            user: user,
-            comentarios: [],
-          });
+        return res.send(producto)
+           return res.render('product', {
+            producto: producto});
         })
-      })
       .catch((error) => {
         console.log(error)
         return res.send(error);

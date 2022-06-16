@@ -21,8 +21,7 @@ router.get ('/productAdd', controller.showForm)
 router.post ('/productAdd', upload.single('imagen'), controller.nuevoProducto);
 
 //comentarios
-router.post ('/:id/comentar', controller.comentarios);
-router.get ('/:id/comentar', controller.showComment);
+router.post ('/:id', controller.comentarios);
 
 //detalle de producto
 router.get ('/:id', controller.detalleProducto);
