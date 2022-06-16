@@ -90,7 +90,7 @@ const productController = {
         }]
       })
       .then((producto) => {
-        return res.send(producto)
+        //return res.send(producto)
            return res.render('product', {
             producto: producto});
         })

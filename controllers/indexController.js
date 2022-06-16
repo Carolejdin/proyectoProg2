@@ -33,7 +33,7 @@ const indexController = {
         })
         .then((data) => {
             if (data == true) {
-                return res.render('searchResults', { product: palabraBuscada})
+                return res.render('searchResults', { search: palabraBuscada})
             } else {
                 res.send('no se encontraron resultados')
               }
