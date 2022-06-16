@@ -36,7 +36,7 @@ const indexController = {
      if (data.length>0) {
     return res.render('searchResults', { search: palabraBuscada})
             } else {
-                res.send('no se encontraron resultados')
+                res.send('Oops! No se encontraron resultados para tu búsqueda')
               }
         
         })
