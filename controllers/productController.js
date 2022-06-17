@@ -122,13 +122,13 @@ const productController = {
 
 
   delete: function (req, res) {
-    bd.Product.destroy({
-        were: {
+    products.destroy({
+        where: {
           id: req.params.id
         }
       })
-      .then(function (Product) {
-        res.redirect('/')
+      .then(function (response) {
+        return res.redirect('/')
       })
       .catch(function (error) {
         res.send(error)

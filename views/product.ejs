@@ -32,10 +32,10 @@
 		</div>
 	</div>
 
-		<form class="form" action="/product//<%= producto.id %>" method="POST">
+		<form class="form" action="<%= producto.id %>/delete" method="POST">
 			<button type="submit" class="buy-now-button">ELIMINAR PUBLICACION</button>
 		</form>
-		<form class="form" action="/product/productEdit<%= producto.id %>" method="GET">
+		<form class="form" action="/product/delete<%= producto.id %>" method="GET">
 			<button type="submit" class="buy-now-button">EDITAR PUBLICACION</button>
 		</form>
 

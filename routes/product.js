@@ -32,8 +32,7 @@ router.get ('/productEdit', controller.showEdit);
 
 
 //eliminar productos
-
-router.post ('/productAdd', controller.delete);
+router.post ('/:id/delete', controller.delete);
 
 
 module.exports = router;
