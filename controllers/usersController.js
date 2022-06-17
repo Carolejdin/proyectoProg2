@@ -1,5 +1,6 @@
 const db = require('../database/models');
 const bcrypt = require('bcryptjs');
+const Follower = require('../database/models/Follower');
 
 const users = db.User;
 const producto = db.Product;
@@ -190,9 +191,30 @@ const usersController = {
             res.clearCookie('userId')
         }
         return res.redirect('/')
-    }
+    },
+    seguir: function(req, res){
+        let follower = {
+            seguidor : req.body.seguidor,
+            seguido : req.body.seguido,
+            
+        }
+        if(req.body.seguido == 1){
+            seguidores.create(follower)
+               .then(function(respuesta){
+                return res.redirect('/users/profile' + req.body.seguido);
+               })
 
-
+        }if (req.body.seguido == 0){
+            seguidores.destroy({
+                where: [{seguido: req.body.seguido}, {seguidor: req.body.seguidor}]
+            })
+            .then(function(respuesta){
+             return res.redirect('/users/profile' + req.body.seguidor);
+            })
+        }
+        
+    },
+    
 
 
 

@@ -3,6 +3,7 @@ const db = require('../database/models/index');
 const op = db.Sequelize.Op;
 const products = db.Product;
 const users = db.User;
+const comment = db.Comentario;
 
 const productController = {
   showForm: function (req, res) {
@@ -66,13 +67,18 @@ const productController = {
     }
   },
   comentarios: function (req, res) {
+
+    if(req.session.user == undefined){
+    res.redirect('/users/login')
+  }
+
     let comentario = {
       comentario: req.body.comentario,
       productId: req.params.id,
       usuarioId: req.session.user.id,
     }
 
-    db.Comentario.create(comentario)
+    comment.create(comentario)
       .then(function () {
         return res.redirect('/product/' + req.params.id)
       })

@@ -38,6 +38,23 @@
 		<form class="form" action="/product/productEdit<%= producto.id %>" method="GET">
 			<button type="submit" class="buy-now-button">EDITAR PUBLICACION</button>
 		</form>
+
+		<section class="comments">
+			<% for (let i =0; i <producto.comentarios.length; i++) { %>
+				<article>
+					<img src= "/images/<%=producto.comentarios[i].user.profilePic%>" alt="img perfil">
+					<div class="data">
+						<p class="user">
+						<strong> <a href="/users/profile?userId=<%=producto.comentarios[i].user.id%>"> <%=producto.comentarios[i].user.username%> </a> </strong>
+							<%=producto.comentarios[i].comentario %> 
+						</p>
+
+						
+					</div>
+				</article>
+				<% } %>
+		</section>
+
 <form class="form" action="/product/<%= producto.id %>" method="POST">
 		<input class="form-input" type="text" value="" placeholder="Agregar comentario" name="comentario">
 		<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>

@@ -25,12 +25,23 @@
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
 					<h1 class="main-title"><%= users.dataValues.username %> </h1>
-					<% if(locals.user && locals.user.username != users.dataValues.username){ %>
-						<a href="/users/profile"></a>
-						<form action="/users/seguir/ <%= users.dataValues.id %> " method="post">
-							<button class="btn mt-3 ml-4" type="submit" name="seguir">Seguir</button>
-						</form>
-					<% } %>
+					<% if(locals.user){ %>
+						<a href="/users/profileEdit/<%=locals.user.usuarioId%>">
+							<i class="fas fa-cog"></i>
+						</a>
+						<% }%>
+					</h1>
+					<form class="btn mt-3 ml-4" href="" action="/users/profile?userId=<%= user.id %>" method="post">
+						<input type="hidden" name="seguido" value="<%= locals.user.usuarioId %>">
+						<input type="hidden" name="seguidor" value="<%=locals.user.usuarioId%>">
+						<% if(users.seguido == null) { %>
+							<button>SEGUIR</button>
+							<input type="hidden" name="seguido" value="<%=1%>">
+						<%} else { %> 
+							<button>DEJAR DE SEGUIR</button>
+							<input type="hidden" name="seguido" value="<%=0%>">
+						<% } %> 
+					</form>
 				</div>
 				<div>
 					<ul class="">
@@ -65,7 +76,7 @@
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
 						<figure class="product-box_image">
-							<a href="/product/<%producto[i].id%>"><img src="/images/<%=producto[i].imagen%>" alt="foto producto"></a>
+							<a href="/product/<%=producto[i].id%>"><img src="/images/<%=producto[i].imagen%>" alt="foto producto"></a>
 							
 						</figure>
 						<article class="product-box_data">
