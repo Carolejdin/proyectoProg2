@@ -194,16 +194,16 @@ const usersController = {
     },
     seguir: function(req, res){
         seguidores.findOne({ 
-            where: [{ seguidorId : req.session.user.id, 
-                        seguidoId : req.params.id }]
+            where: [{ seguidor : req.session.user.id, 
+                      seguido : req.params.id }]
         })
       .then(function(user){
         if(user){
             return res.redirect(`/users/profile/${req.params.id}`)
         }else{
             seguidores.create({
-                seguidorId : req.session.user.id,
-                seguidoId : req.params.id
+                seguidor : req.session.users.id,
+                seguido : req.params.id
             })
             .then(function(response){
                 return res.redirect(`/users/profile/${req.params.id}`)
