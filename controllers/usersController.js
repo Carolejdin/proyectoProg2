@@ -59,7 +59,7 @@ const usersController = {
             })
             .then(function (data) {
                 if (req.file) {
-                    req.session.user.profilePic = req.body.profilePic
+                    req.session.user.profilePic = req.file.profilePic
                 }
                 res.redirect('/')
             })

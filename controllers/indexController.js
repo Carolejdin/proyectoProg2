@@ -30,27 +30,26 @@ const indexController = {
           usuarioId : req.session.user.id
         }
       },*/
-      searchResults: function (req,res){
-        let palabraBuscada = req.query.search
-        products.findAll({
-            where: [{nombre: {[op.like]: "%" + palabraBuscada + "%"}},
-            {descripcion: {[op.like]: "%" + palabraBuscada + "%"}}]
-        })
-        .then((data) => {    
-     if (data.length>0) {
-    return res.render('searchResults', { producto: palabraBuscada},)
-            } else {
-                res.send('Oops! No se encontraron resultados para tu búsqueda')
-              }
-        
-        })
-        .catch ((error)=> {
-            return res.send(error)
-        })
-
+      searchResults: (req, res) => {
+        let palabraBuscada = req.query.search;
+        let condicion = {
+            where :{
+             [op.or]: [
+               { nombre: { [op.like]: `%${ palabraBuscada}%` } },
+               { descripcion: { [op.like]: `%${ palabraBuscada}%` } }
+             ]
+           }, 
+            include: [ { association: 'user' }]
+           }
       
+        products.findAll(condicion)
+        .then((result) => {
+        return res.render('searchResults', { product : result } )
+        }).catch((err) => {
+            console.log(err);
+        });
+    }
 
-}
-}
+    }
   
 module.exports = indexController;

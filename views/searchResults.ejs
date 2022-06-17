@@ -13,50 +13,37 @@
             <%- include('./partials/header')  %> 
     <% } %>
 
-            <div class="container products-wrapper">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="products-title">Resultados de libros: </h2>
-                    </div>
+<!--Novedades-->
+<div class="container products-wrapper">
+    <div class="row">
+        <div class="col-12">
 
+            <% if (product.length != 0) { %>
+            <h2 class="products-title"> Browse results for: </h2>
+            <% for (let i = 0; i < product.length; i++) { %>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <section class="product-box">
+                        <a href="/product/id/<%= product[i].id %>">
+                            <figure class="product-box_image">
+                                <h2> <%= product[i].nombre  %>  </h2>
+                                <img src="/images/<%= product[i].imagen %>"  alt="books">
+                            </figure>
+                            <article class="product-box_data">
+                                
+                                <p> <%= product[i].descripcion  %> </p>
+                                <p>Created by <%= product[i].user.username %></p>
+                            </article>
+                        </a>
+                    </section>
+                </div>
+                <% } %>
+                <% }  else {  %>
+                    <h2 class="products-title">Oops! No se encontraron resultados para tu busqueda</h2>
+                 <% } %> 
 
-                    <div class="products-wrapper">
-                        <div class="row">
-                            <div class="col-12">
+    </div>
 
-                            </div class="fotos">
-
-                            
-                                <div class="col-12 col-sm-6 col-lg-3">
-                                    <% for (let i = 0; i < producto.length; i++) { %>
-                                    <section class="product-box">
-
-                                        <a href="/product/<%= producto[i].id %>">
-
-                                            <figure class="product-box_image">
-                                                <img src="<%=producto[i].imagen %>" alt="foto libro">
-                                            </figure>
-                                            <article class="product-box_data">
-                                                <h2>
-                                                    <%=producto[i].nombre %>
-                                                </h2>
-                                                <p>
-                                                    <%=producto[i].descripcion%>
-                                                </p>
-                                                <p>
-                                                    <%=producto[i].comentario %>
-                                                </p>
-                                                <p>
-                                               creador: <%= producto[i].usuarioId %>
-                                            </p>
-                                            </article>
-                                        </a>
-                                        <% } %>
-					
-						
-				
-                                    </section>
-                                </div>
+</div>
 
 
 
@@ -65,7 +52,7 @@
 
 
 
-                                    <%- include('./partials/footer') %>
+ <%- include('./partials/footer') %>
 
     </body>
 

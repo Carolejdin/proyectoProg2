@@ -105,7 +105,7 @@ const productController = {
         return res.send(error);
       })
   },
-  showEdit: function (req, res) {
+/*   showEdit: function (req, res) {
     res.render('productEdit')
   },
   edit: function (req, res) {
@@ -118,7 +118,7 @@ const productController = {
       .catch(function (error) {
         res.send(error)
       })
-  },
+  }, */
 
 
   delete: function (req, res) {
@@ -134,5 +134,38 @@ const productController = {
         res.send(error)
       })
   },
+  productEdit: function(req, res) {
+
+
+    products.findByPk(req.params.id)
+         .then(function (products) {
+             res.render('productEdit', { products : producto });
+         })
+         .catch(function (error) {
+             res.send(error);
+         })
+ },
+
+ updateProduct: function (req, res) {
+
+  
+  if (req.file) req.file.imagen = (req.file.imagen).replace('public', '');
+  db.Product.update(req.body, {
+   
+          where: {
+              id: req.session.user.id
+          }
+      })
+      .then(function (data) {
+          if (req.file) {
+              req.session.user.imagen = req.file.imagen
+          }
+          res.redirect('/')
+      })
+      .catch(function (error) {
+          console.log(error)
+          res.send(error)
+      })
+},
 }
 module.exports = productController
