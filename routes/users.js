@@ -19,6 +19,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage })
 
 router.get('/profile', controller.profile);
+router.post('/profile', controller.seguir);
 router.get('/profileEdit', controller.profileEdit);
 router.post('/profileEdit', upload.single('profilePic'), controller.updateProfile);
 router.get('/register', controller.create);
@@ -26,6 +27,7 @@ router.post('/register', upload.single('profilePic'), controller.store);
 router.get ('/login', controller.login);
 router.post ('/login', controller.signIn);
 router.post('/logout', controller.logout);
+
 
 //router.post('/profile', controller.seguir);
 /* //router.get('/test', controller.test);

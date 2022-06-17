@@ -192,60 +192,25 @@ const usersController = {
         }
         return res.redirect('/')
     },
-    /* seguir: function(req, res){
-       if (req.session.user){
-        seguidores.create({
-            seguidor: req.session.user.id,
-            seguido: req.params.id
+    seguir: function(req, res){
+        seguidores.findOne({ 
+            where: [{ seguidorId : req.session.user.id, 
+                        seguidoId : req.params.id }]
         })
-        .then(user => {
-            res.redirect('/users/profile/' + req.params.id)
-        })
-       }else{
-        res.redirect('/users/login')
-       }
-    },
-    unfollow: function(req, res){
-        if (req.session.user){
-            seguidores.destroy({
-                where: {
-                    [op.and]: [{
-                        seguidor : req.session.user.id
-                    },
-                {
-                    seguido: req.params.id
-                }]
-                }
-            })
-            .then(user => {
-                res.redirect('/users/profile/' + req.params.id)
-            })
+      .then(function(user){
+        if(user){
+            return res.redirect(`/users/profile/${req.params.id}`)
         }else{
-            res.redirect('/users/login')
-
-
-    }},
-    test: function(req, res){
-        seguidores.findByPk(3, {
-            include: [{
-                association: "users"
-            },{
-
-                association: "user"
-            }
-                
-        
-        ]
-
-        }).then(user=> {
-            res.send(user)
-        })
-    }
-    
-
-
- */
-
+            seguidores.create({
+                seguidorId : req.session.user.id,
+                seguidoId : req.params.id
+            })
+            .then(function(response){
+                return res.redirect(`/users/profile/${req.params.id}`)
+            }).catch(error => console.log(error))
+        } 
+      }).catch(error => console.log(error))
+}
 }
 
 module.exports = usersController;

@@ -31,7 +31,7 @@
 						</a>
 						<% }%>
 					</h1>
-					<form class="btn mt-3 ml-4" href="" action="/users/profile/<%= user.id %>" method="post">
+					<form class="btn mt-3 ml-4" href="" action="/users/profile?userId=<%= user.id %>" method="post">
 						<input type="hidden" name="seguido" value="<%= locals.user.usuarioId %>">
 						<input type="hidden" name="seguidor" value="<%=locals.user.usuarioId%>">
 						<% if(users.seguido == null) { %>
