@@ -7,7 +7,12 @@ const products = db.Product
 //un metodo para cada request
 const indexController = {
     index: function (req, res) {
-        products.findAll()
+        products.findAll( {
+            include: [ { association: 'user' }]
+        },
+        {
+            order: [[ "createdAt" , "DESC"]]
+        })
           .then(function(results){
               return res.render('index', {producto : results})
            })
@@ -31,10 +36,9 @@ const indexController = {
             where: [{nombre: {[op.like]: "%" + palabraBuscada + "%"}},
             {descripcion: {[op.like]: "%" + palabraBuscada + "%"}}]
         })
-        .then((data) => {
-          
+        .then((data) => {    
      if (data.length>0) {
-    return res.render('searchResults', { search: palabraBuscada})
+    return res.render('searchResults', { producto: palabraBuscada},)
             } else {
                 res.send('Oops! No se encontraron resultados para tu búsqueda')
               }

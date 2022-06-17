@@ -15,7 +15,7 @@
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
 			<h2 class="products-title">
-				<%= producto.nombre %>
+				<%=producto.nombre%>
 			</h2>
 			<p class="product-detail-description">
 				<a href="/product/productAdd">Agregar</a>
@@ -26,13 +26,19 @@
 				<article class="col-12 col-lg-8 product-detail-info">
 					<img src="/images/<%=producto.imagen%>" alt="" class="product-detail-img">
 					<p class="product-detail-description">
-						<%= producto.descripcion %>
+						<%=producto.descripcion %>
 					</p>
 			</div>
 		</div>
 	</div>
 
-	<form class="form" action="/product/<%=producto.id%>" method="POST">
+		<form class="form" action="/product//<%= producto.id %>" method="POST">
+			<button type="submit" class="buy-now-button">ELIMINAR PUBLICACION</button>
+		</form>
+		<form class="form" action="/product/productEdit<%= producto.id %>" method="GET">
+			<button type="submit" class="buy-now-button">EDITAR PUBLICACION</button>
+		</form>
+<form class="form" action="/product/<%= producto.id %>" method="POST">
 		<input class="form-input" type="text" value="" placeholder="Agregar comentario" name="comentario">
 		<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 	</form>

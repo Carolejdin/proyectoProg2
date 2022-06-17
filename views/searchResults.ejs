@@ -26,27 +26,35 @@
 
                             </div class="fotos">
 
-                         
+                            
                                 <div class="col-12 col-sm-6 col-lg-3">
+                                    <% for (let i = 0; i < producto.length; i++) { %>
                                     <section class="product-box">
 
-                                        <a href="/">
+                                        <a href="/product/<%= producto[i].id %>">
 
                                             <figure class="product-box_image">
-                                                <img src="<%=search.imagen %>" alt="foto libro">
+                                                <img src="<%=producto[i].imagen %>" alt="foto libro">
                                             </figure>
                                             <article class="product-box_data">
                                                 <h2>
-                                                    <%=search.nombre %>
+                                                    <%=producto[i].nombre %>
                                                 </h2>
                                                 <p>
-                                                    <%=search.descripcion %>
+                                                    <%=producto[i].descripcion%>
                                                 </p>
                                                 <p>
-                                                    <%=search.comentario %>
+                                                    <%=producto[i].comentario %>
                                                 </p>
+                                                <p>
+                                               creador: <%= producto[i].usuarioId %>
+                                            </p>
                                             </article>
                                         </a>
+                                        <% } %>
+					
+						
+				
                                     </section>
                                 </div>
 
