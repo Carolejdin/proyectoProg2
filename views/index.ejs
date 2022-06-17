@@ -39,7 +39,7 @@
 									<h2 class="producto"> <a href="/product/<%= producto[i].id %>"><%= producto[i].nombre %></a></h2>
 									<p> <%= producto[i].descripcion %> </p>
 									<p> Cantidad de comentarios: <%= producto[i].comentario.length %> </p>
-									<p> <a href="/users/profile?userId=<%= producto[i].usuarioId %> "> Subido por: <%= producto[i].usuarioId %> </a></p>
+									<p> <a href="/users/profile?userId=<%= producto[i].usuarioId %> "> Subido por: <%= producto[i].user.username %> </a></p>
 
 
 								</article>
