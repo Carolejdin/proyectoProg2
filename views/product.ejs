@@ -36,9 +36,8 @@
 				<form class="form" action="<%= producto.id %>/delete" method="POST">
 					<button type="submit" class="buy-now-button">ELIMINAR PUBLICACION</button>
 				</form>
-		<form action="/product/productEdit/<%= producto.id %>" method="get">
-			<button class="borrar" type="submit" class="buy-now-button"> Editar producto </button>
-		</form>
+		
+		<a href="/product/productEdit/<%= producto.id %>">Editar producto</a>
 		<% } %>
 	<% } %>
 
