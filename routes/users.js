@@ -26,7 +26,11 @@ router.post('/register', upload.single('profilePic'), controller.store);
 router.get ('/login', controller.login);
 router.post ('/login', controller.signIn);
 router.post('/logout', controller.logout);
-router.post('/profile', controller.seguir);
+
+//router.post('/profile', controller.seguir);
+/* //router.get('/test', controller.test);
+router.get('/seguir', controller.seguir);
+router.get('/unfollow', controller.unfollow) */
 
 
 //router.post('/store', upload.single('profilePic'), controller.store);

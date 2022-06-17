@@ -192,32 +192,59 @@ const usersController = {
         }
         return res.redirect('/')
     },
-    seguir: function(req, res){
-        let follower = {
-            seguidor : req.body.seguidor,
-            seguido : req.body.seguido,
-            
-        }
-        if(req.body.seguido == 1){
-            seguidores.create(follower)
-               .then(function(respuesta){
-                return res.redirect('/users/profile' + req.body.seguido);
-               })
-
-        }if (req.body.seguido == 0){
-            seguidores.destroy({
-                where: [{seguido: req.body.seguido}, {seguidor: req.body.seguidor}]
-            })
-            .then(function(respuesta){
-             return res.redirect('/users/profile' + req.body.seguidor);
-            })
-        }
-        
+    /* seguir: function(req, res){
+       if (req.session.user){
+        seguidores.create({
+            seguidor: req.session.user.id,
+            seguido: req.params.id
+        })
+        .then(user => {
+            res.redirect('/users/profile/' + req.params.id)
+        })
+       }else{
+        res.redirect('/users/login')
+       }
     },
+    unfollow: function(req, res){
+        if (req.session.user){
+            seguidores.destroy({
+                where: {
+                    [op.and]: [{
+                        seguidor : req.session.user.id
+                    },
+                {
+                    seguido: req.params.id
+                }]
+                }
+            })
+            .then(user => {
+                res.redirect('/users/profile/' + req.params.id)
+            })
+        }else{
+            res.redirect('/users/login')
+
+
+    }},
+    test: function(req, res){
+        seguidores.findByPk(3, {
+            include: [{
+                association: "users"
+            },{
+
+                association: "user"
+            }
+                
+        
+        ]
+
+        }).then(user=> {
+            res.send(user)
+        })
+    }
     
 
 
-
+ */
 
 }
 

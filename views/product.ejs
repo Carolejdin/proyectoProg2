@@ -30,12 +30,17 @@
 		</div>
 	</div>
 
-		<form class="form" action="<%= producto.id %>/delete" method="POST">
-			<button type="submit" class="buy-now-button">ELIMINAR PUBLICACION</button>
+	
+		<% if (locals.user) { %> 
+			<% if (locals.user.id == producto.user.id) { %> 
+				<form class="form" action="<%= producto.id %>/delete" method="POST">
+					<button type="submit" class="buy-now-button">ELIMINAR PUBLICACION</button>
+				</form>
+		<form action="/product/productEdit/<%= producto.id %>" method="get">
+			<button class="borrar" type="submit" class="buy-now-button"> Editar producto </button>
 		</form>
-		<form class="form" action="/product/productEdit" method="post">
-			<button type="submit" class="buy-now-button">EDITAR PUBLICACION</button>
-		</form>
+		<% } %>
+	<% } %>
 
 		<section class="comments">
 			<% for (let i =0; i <producto.comentarios.length; i++) { %>

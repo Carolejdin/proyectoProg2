@@ -134,38 +134,39 @@ const productController = {
         res.send(error)
       })
   },
-  productEdit: function(req, res) {
-
-
-    products.findByPk(req.params.id)
-         .then(function (products) {
-             res.render('productEdit', { products : producto });
-         })
-         .catch(function (error) {
-             res.send(error);
-         })
- },
-
- updateProduct: function (req, res) {
-
-  
-  if (req.file) req.file.imagen = (req.file.imagen).replace('public', '');
-  db.Product.update(req.body, {
-   
-          where: {
-              id: req.session.user.id
-          }
-      })
-      .then(function (data) {
-          if (req.file) {
-              req.session.user.imagen = req.file.imagen
-          }
-          res.redirect('/')
-      })
-      .catch(function (error) {
-          console.log(error)
-          res.send(error)
-      })
+  edit: function(req, res){
+    if(req.session.user == undefined){
+        return res.redirect('/')
+    } else { 
+        products.findOne({
+            where: [{id: req.params.id}]
+        })
+        .then (function(producto){
+            return res.render('productEdit' , {productos: producto});
+        })
+        
+    };
+},
+edited: function(req, res){
+    
+  let product = {
+         nombre: req.body.nombre,
+         descripcion: req.body.descripcion,
+         //imagen: req.file.filename,
+         usuarioId: req.session.user.id
+     }
+ products.update(product, {
+     where: [{id: req.params.id}]
+ })
+ .then (function(respuesta){
+     products.findByPk(req.params.id)
+     .then(function(producto){
+         return res.redirect (`/product/${producto.nombre}`)
+     })
+     .catch(error => console.log(error))
+    
+ })
+ .catch(error => console.log(error))
 },
 }
 module.exports = productController
