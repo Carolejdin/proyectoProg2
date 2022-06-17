@@ -21,14 +21,14 @@
 				</div>
 				<!-- Show the "ultimos" products -->
 				<h2 class="col-12">
-					<form action="/product/productEdit " method="POST" enctype="multipart/form-data" class="form-container">
-						<input type="text" name="nombre" placeholder="Nombre del libro " class="form-input">
-						<input type="text" name="descripcion" placeholder="Descripcion del libro" class="form-input">
-						<input type="date" name="anioDePublicacion" placeholder="Agregar año de publicacion" class="form-input">
-						<input type="text" name="autor" placeholder="Agregar autor" class="form-input">
-						<input type="text" name="comentario" placeholder="Agregar un comentario" class="form-input"> 
-						<input type="text" name="editorial" placeholder="Agregar editorial" class="form-input">
-						<input type="file" name="imagen" placeholder="Agregar imagen del libro" class="form-input">
+					<form action="/product/productEdit " method="POST" enctype="multipart/form-data" class="form-container" >
+						<input type="text" name="nombre" placeholder="Nombre del libro " class="form-input" value="<%= producto.nombre %> ">
+						<input type="text" name="descripcion" placeholder="Descripcion del libro" class="form-input" value="<%= producto.descripcion %>">
+						<input type="date" name="anioDePublicacion" placeholder="Agregar año de publicacion" class="form-input" value="<%= producto.anioDePublicacion %>">
+						<input type="text" name="autor" placeholder="Agregar autor" class="form-input" value="<%= producto.autor %>">
+						<input type="text" name="comentario" placeholder="Agregar un comentario" class="form-input" value="<%= producto.comentario %>"> 
+						<input type="text" name="editorial" placeholder="Agregar editorial" class="form-input" value="<%= producto.editorial %>">
+						<input type="file" name="imagen" placeholder="Agregar imagen del libro" class="form-input" value="<%= producto.imagen %>">
 
               	<button type="submit">Editar</button>
 					</form>

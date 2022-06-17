@@ -149,13 +149,13 @@ const productController = {
 },
 edited: function(req, res){
     
-  let product = {
+  let producto = {
          nombre: req.body.nombre,
          descripcion: req.body.descripcion,
          //imagen: req.file.filename,
          usuarioId: req.session.user.id
      }
- products.update(product, {
+ products.update(producto, {
      where: [{id: req.params.id}]
  })
  .then (function(respuesta){
