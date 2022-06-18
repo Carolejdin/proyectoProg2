@@ -202,7 +202,7 @@ const usersController = {
             return res.redirect(`/users/profile/${req.params.id}`)
         }else{
             seguidores.create({
-                seguidorId : req.session.users.id,
+                seguidorId : req.session.user.id,
                 seguidoId : req.params.id
             })
             .then(function(response){
