@@ -22,15 +22,15 @@
 			
 				<form action="/users/profileEdit" method="POST" class="form-container" enctype="multipart/form-data">
 					<input type="text" name="username" placeholder="Nombre de Usuario" class="form-input"
-						value="">
+						value="<%= users.username %> ">
 					<input type="text" name="email" placeholder="E-Mail" class="form-input"
-						value="">
-					<input type="password" name="password" placeholder="Contraseña" class="form-input"
-						value="">
-					<input type="date" name="birthDay" class="form-input" value="">
+						value="<%= users.email %> ">
+					<input type="password" name="password" placeholder="Contraseña" class="form-input">
+					<input type="date" name="birthDay" class="form-input" value="<%= users.birthDay %> ">
 					<input type="text" name="DNI" placeholder="DNI" class="form-input"
-						value="">
-					<input type="file" name="profilePic" placeholder="Foto de perfil editado" class="form-input" value="">
+						value="<%= users.dni %> ">
+					<input type="file" name="profilePic" placeholder="Foto de perfil" class="form-input"
+						value="<%= users.profilePic %> ">
 					
 					<button type="submit">Modificar</button>
 				</form>

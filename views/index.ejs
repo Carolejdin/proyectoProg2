@@ -4,56 +4,57 @@
 <!-- Include Head -->
 <%- include('./partials/head') %>'
 
-	<body>
-		
-		<% if (locals.user != null) { %>
-			<%- include('./partials/headerLogueado')  %> 
+<body>
+
+	<% if (locals.user != null) { %>
+	<%- include('./partials/headerLogueado')  %>
 	<% } else{%>
-			<%- include('./partials/header')  %> 
+	<%- include('./partials/header')  %>
 	<% } %>
 
-			<!-- Banner -->
-			<div class="banner">
-				<img src="/images/BANNERQUESI.png" alt="Banner de ofertas">
-			</div>
-			<!-- /Banner -->
+	<!-- Banner -->
+	<div class="banner">
+		<img src="/images/BANNERQUESI.png" alt="Banner de ofertas">
+	</div>
+	<!-- /Banner -->
 
-			<!-- Novedades -->
+	<!-- Novedades -->
 
-			<div class="containerproducts-wrapper">
-				<div class="products-wrapper">
-					<div class="row">
-						<div class="col-12">
-							<h2 class="products-title">NOVEDADES</h2>
-						</div class="fotos">
-						<!-- Show the "ultimos" products -->
-						
-						<% for (let i=0; i<producto.length; i++) {%> 
-						<div class="col-12 col-sm-6 col-lg-3">
-							<section class="product-box">
-								<figure class="product-box_image">
-									<a href="/product/<%=producto[i].id%>"><img src="/images/<%=producto[i].imagen%>" alt="foto producto"></a>
-									
-								</figure>
-								<article class="product-box_data">
-									<h2 class="producto"> <a href="/product/<%= producto[i].id %>"><%= producto[i].nombre %></a></h2>
-									<p> <%= producto[i].descripcion %> </p>
-									<p> Cantidad de comentarios: <%= producto[i].comentario.length %> </p>
-									<p> <a href="/users/profile?userId=<%= producto[i].usuarioId %> "> Subido por: <%= producto[i].user.username %> </a></p>
+	<div class="containerproducts-wrapper">
+		<div class="products-wrapper">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="products-title">NOVEDADES</h2>
+				</div class="fotos">
+				<!-- Show the "ultimos" products -->
+
+				<% for (let i=0; i<producto.length; i++) {%>
+				<div class="col-12 col-sm-6 col-lg-3">
+					<section class="product-box">
+						<figure class="product-box_image">
+							<a href="/product/<%=producto[i].id%>"><img src="/images/<%=producto[i].imagen%>"
+									alt="foto producto"></a>
+
+						</figure>
+						<article class="product-box_data">
+							<h2 class="producto"> <a href="/product/<%= producto[i].id %>"><%= producto[i].nombre %></a>
+							</h2>
+							<p> <%= producto[i].descripcion %> </p>
+							<p> Cantidad de comentarios: <%= producto[i].comentarios.length %> </p>
+							<p> <a href="/users/profile?userId=<%= producto[i].usuarioId %> "> Subido por:
+								<%= producto[i].user.username %> </a></p>
+						</article>
+
+					</section>
+				</div>
+				<% } %>
+
+				<!-- /Novedades -->
 
 
-								</article>
 
-							</section>
-						</div>
-						<% } %> 
-						
-						<!-- /Novedades -->
-
-
-
-					<%- include('./partials/footer') %>
-	</body>
+				<%- include('./partials/footer') %>
+</body>
 
 </html>
 <!-- Include Head -->

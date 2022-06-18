@@ -16,8 +16,14 @@ const usersController = {
             }).then(async function (user) {
                 const userProducts = await producto.findAll({
                     where: [{
-                        id: req.query.userId
+                        usuarioId: req.query.userId
                     }],
+                    include: [ { association: 'user' }, {
+                        association: 'comentarios',
+                        include: [{
+                          association: 'user'
+                        }]
+                    }]
                 })
                 const userSeguidores = await seguidores.findAll({
                     where: [{
@@ -44,22 +50,28 @@ const usersController = {
 
     profileEdit: function (req, res) {
         return res.render('profileEdit', {
-            users: users
-
+            users: req.session.user
         });
     },
 
     updateProfile: function (req, res) {
         req.body.password = bcrypt.hashSync(req.body.password, 10)
-        if (req.file) req.body.profilePic = (req.file.path).replace('public', '');
-        db.User.update(req.body, {
+        // if (req.file) req.body.profilePic = (req.file.path).replace('public', '');
+        let user = {
+            email: req.body.email,
+            dni: req.body.DNI,
+            username: req.body.username,
+            password: bcrypt.hashSync(req.body.password, 10), //vamos a hashear la contraseña que viene del formulario.
+            profilePic: req.file.filename,
+        }
+        db.User.update(user, {
                 where: {
                     id: req.session.user.id
                 }
             })
             .then(function (data) {
                 if (req.file) {
-                    req.session.user.profilePic = req.file.profilePic
+                    req.session.user.profilePic = req.file.filename
                 }
                 res.redirect('/')
             })
@@ -202,7 +214,6 @@ const usersController = {
             })
             .then(function (user) {
                 if (user) {
-                    console.log(user)
                     return res.redirect(`/users/profile?userId=${req.params.id}`)
                 } else {
                     seguidores.create({

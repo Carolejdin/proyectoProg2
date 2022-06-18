@@ -8,7 +8,12 @@ const products = db.Product
 const indexController = {
     index: function (req, res) {
         products.findAll( {
-            include: [ { association: 'user' }]
+            include: [ { association: 'user' }, {
+              association: 'comentarios',
+              include: [{
+                association: 'user'
+              }]
+            }]
         },
         {
             order: [[ "createdAt" , "DESC"]]

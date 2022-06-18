@@ -137,24 +137,29 @@ const productController = {
   },
 
   edit: function (req, res) {
-    return res.render('productEdit', {
+    products.findOne({
+      where: [{
+        id: req.params.id
+      }]
+    }).then((products) => {
+      return res.render('productEdit', {
         producto: products
-
-    });
+      });
+    })
 },
 
 edited: function (req, res) {
     if (req.file) req.body.profilePic = (req.file.path).replace('public', '');
     db.Product.update(req.body, {
             where: {
-                id: req.session.user.id
+                id: req.params.id
             }
         })
         .then(function (data) {
             if (req.file) {
                 req.session.user.imagen = req.file.imagen
             }
-            res.redirect('/product')
+            res.redirect('/product/' + req.params.id)
         })
         .catch(function (error) {
             console.log(error)
