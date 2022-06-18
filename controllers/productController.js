@@ -84,6 +84,7 @@ const productController = {
       })
       .catch(error => console.log(error))
   },
+  
   detalleProducto: function (req, res) {
     products.findByPk(req.params.id, {
         include: [{

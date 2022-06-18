@@ -25,15 +25,17 @@
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
 					<h1 class="main-title"><%= users.dataValues.username %> </h1>
-					<% if(locals.user){ %>
-						<a href="/users/profileEdit/<%=locals.user.usuarioId%>">
-							<i class="fas fa-cog"></i>
-						</a>
-						<% }%>
+				
 					</h1>
-					<a href="/users/profile"></a>
-					<form class="btn mt-3 ml-4" href="" action="/users/seguir/<%= users.dataValues.id %>" method="get">
-					<button class="btn mt-3 ml-4" type="submit" name="seguir">Seguir </button>
+					<!-- <a href="/users/profile"></a> -->
+
+					<% if(locals.user.id == users.dataValues.id){ %> 
+						<a href="/users/profileEdit" class="btn mt-3 ml-4"> Editar perfil <i class="fas fa-cog"></i></a>
+						<% } else { %> 
+							<a href="/users/profile"></a>
+							<form  action="/users/seguir/<%= users.dataValues.id %> " method="post">
+							<button class="btn mt-3 ml-4" type="submit" name="seguir">Seguir</button>
+						<% }  %>
 						
 					</form>
 				</div>

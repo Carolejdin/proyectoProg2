@@ -192,25 +192,31 @@ const usersController = {
         }
         return res.redirect('/')
     },
-    seguir: function(req, res){
-        seguidores.findOne({ 
-            where: [{ seguidorId : req.session.user.id, seguidoId : req.params.id }]
-        })
-      .then(function(user){
-        if(user){
-            console.log(user)
-            return res.redirect(`/users/profile/${req.params.id}`)
-        }else{
-            seguidores.create({
-                seguidorId : req.session.user.id,
-                seguidoId : req.params.id
+    seguir: function (req, res) {
+        seguidores.findOne({
+                
+                where: [{
+                    seguidor: req.session.user.id,
+                    seguido: req.params.id
+                }]
             })
-            .then(function(response){
-                return res.redirect(`/users/profile/${req.params.id}`)
-            }).catch(error => console.log(error))
-        } 
-      }).catch(error => console.log(error))
-},
+            .then(function (user) {
+                if (user) {
+                    console.log(user)
+                    return res.redirect(`/users/profile?userId=${req.params.id}`)
+                } else {
+                    seguidores.create({
+                            seguidor: req.session.user.id,
+                            seguido: req.params.id
+                        })
+                        .then(function (respuesta) {
+                            return res.redirect(`/users/profile?userId=${req.params.id}`)
+                        })
+                        .catch(error => console.log(error))
+                }
+            })
+            .catch(error => console.log(error))
+        },
 }
 
 module.exports = usersController;
