@@ -31,15 +31,15 @@
 						</a>
 						<% }%>
 					</h1>
-					<form class="btn mt-3 ml-4" href="" action="/users/profile?userId=<%= user.id %>" method="post">
-						<input type="hidden" name="seguido" value="<%= locals.user.usuarioId %>">
-						<input type="hidden" name="seguidor" value="<%=locals.user.usuarioId%>">
+					<form class="btn mt-3 ml-4" href="" action="/users/profile?userId=<%= users.id %>" method="post">
+						<input type="hidden" name="seguidoId" value="<%= users.usuarioId %>">
+						<input type="hidden" name="seguidorId" value="<%=users.usuarioId%>">
 						<% if(users.seguido == null) { %>
 							<button>SEGUIR</button>
-							<input type="hidden" name="seguido" value="<%=1%>">
+							<input type="hidden" name="seguido" value="">
 						<%} else { %> 
 							<button>DEJAR DE SEGUIR</button>
-							<input type="hidden" name="seguido" value="<%=0%>">
+							<input type="hidden" name="seguido" value="">
 						<% } %> 
 					</form>
 				</div>
