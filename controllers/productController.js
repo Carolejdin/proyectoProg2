@@ -72,13 +72,13 @@ const productController = {
     res.redirect('/users/login')
   }
 
-    let comentario = {
+    let comentarios = {
       comentario: req.body.comentario,
       productId: req.params.id,
       usuarioId: req.session.user.id,
     }
 
-    comment.create(comentario)
+    comment.create(comentarios)
       .then(function () {
         return res.redirect('/product/' + req.params.id)
       })
@@ -134,39 +134,31 @@ const productController = {
         res.send(error)
       })
   },
-  edit: function(req, res){
-    if(req.session.user == undefined){
-        return res.redirect('/')
-    } else { 
-        products.findOne({
-            where: [{id: req.params.id}]
-        })
-        .then (function(producto){
-            return res.render('productEdit' , {productos: producto});
-        })
-        
-    };
+
+  edit: function (req, res) {
+    return res.render('productEdit', {
+        producto: products
+
+    });
 },
-edited: function(req, res){
-    
-  let producto = {
-         nombre: req.body.nombre,
-         descripcion: req.body.descripcion,
-         //imagen: req.file.filename,
-         usuarioId: req.session.user.id
-     }
- products.update(producto, {
-     where: [{id: req.params.id}]
- })
- .then (function(respuesta){
-     products.findByPk(req.params.id)
-     .then(function(producto){
-         return res.redirect (`/product/${producto.nombre}`)
-     })
-     .catch(error => console.log(error))
-    
- })
- .catch(error => console.log(error))
+
+edited: function (req, res) {
+    if (req.file) req.body.profilePic = (req.file.path).replace('public', '');
+    db.Product.update(req.body, {
+            where: {
+                id: req.session.user.id
+            }
+        })
+        .then(function (data) {
+            if (req.file) {
+                req.session.user.imagen = req.file.imagen
+            }
+            res.redirect('/product')
+        })
+        .catch(function (error) {
+            console.log(error)
+            res.send(error)
+        })
 },
 }
-module.exports = productController
+module.exports = productController;

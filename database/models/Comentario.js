@@ -12,7 +12,7 @@ module.exports = (sequelize, dataTypes) => {
         },
         comentario: {
             type: dataTypes.INTEGER,
-            allowNull:false
+        
         },
         usuarioId: {
             type:dataTypes.INTEGER
