@@ -151,9 +151,9 @@ const productController = {
 edited: function (req, res) {
     if (req.file) req.body.profilePic = (req.file.path).replace('public', '');
     db.Product.update(req.body, {
-            where: {
+            where: [{
                 id: req.params.id
-            }
+            }]
         })
         .then(function (data) {
             if (req.file) {
