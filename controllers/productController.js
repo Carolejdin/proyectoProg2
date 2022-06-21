@@ -137,18 +137,24 @@ const productController = {
   },
 
   edit: function (req, res) {
+    
     products.findOne({
       where: [{
         id: req.params.id
       }]
     }).then((products) => {
+      if (req.session.user != undefined) {
       return res.render('productEdit', {
         producto: products
       });
+    } else{
+      return res.render('register');
+  }
     })
 },
 
 edited: function (req, res) {
+
 
   let producto = {
     nombre: req.body.nombre,
