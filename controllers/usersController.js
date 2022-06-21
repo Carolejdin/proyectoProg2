@@ -56,7 +56,7 @@ const usersController = {
 
     updateProfile: function (req, res) {
         req.body.password = bcrypt.hashSync(req.body.password, 10)
-        // if (req.file) req.body.profilePic = (req.file.path).replace('public', '');
+        
         let user = {
             email: req.body.email,
             dni: req.body.DNI,

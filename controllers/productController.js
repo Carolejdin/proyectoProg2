@@ -149,16 +149,24 @@ const productController = {
 },
 
 edited: function (req, res) {
-    if (req.file) req.body.profilePic = (req.file.path).replace('public', '');
-    db.Product.update(req.body, {
+
+  let producto = {
+    nombre: req.body.nombre,
+    descripcion: req.body.descripcion,
+    anioDePublicacion: req.body.anioDePublicacion,
+    autor: req.body.autor,
+    imagen: req.file.filename,
+    comentario: req.body.comentario,
+    editorial: req.body.editorial,
+    usuarioId: req.session.user.id,
+    usuarioNombre: req.session.user.username,}
+
+    db.Product.update(producto, {
             where: [{
                 id: req.params.id
             }]
         })
         .then(function (data) {
-            if (req.file) {
-                req.session.user.imagen = req.file.imagen
-            }
             res.redirect('/product/' + req.params.id)
         })
         .catch(function (error) {
