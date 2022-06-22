@@ -42,12 +42,13 @@ app.use(function(req, res, next){
   }
   return next()
 })
-
+// Pregunto por la cookie
 app.use(function(req, res, next) {
   if (req.cookies.userId != undefined && req.session.user == undefined) {
 
     let idUsuarioEnCookie = req.cookies.userId;
     
+    // Tengo que ir a la base de datos y preguntar quien es el usuario que le corresponde ese id
     db.User.findByPk(idUsuarioEnCookie)
     .then((user) => {
       req.session.user = user.dataValues;

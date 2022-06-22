@@ -100,7 +100,7 @@ const usersController = {
         let errores = {};
 
         //Chequear que email no esté vacío
-        if (req.body.email == "") {
+        if (req.body.email == "") { 
             errores.message = "El email es obligatorio";
         } else if (req.body.password == "") {
             errores.message = "La contraseña es obligatoria";
@@ -112,7 +112,7 @@ const usersController = {
             errores.message = "La foto de perfil es obligatoria";
         }
 
-        if (errores.message) {
+        if (errores.message) { // Hicimos un if aparte para no ponerlo después de cada validación
             res.locals.errores = errores;
             return res.render('register');
         }
@@ -138,7 +138,7 @@ const usersController = {
                     }
                     //return res.send (user)
                     //Guardar la info en la base de datos
-                    users.create(user)
+                    users.create(user) // Guardo la info en la base de datos --> Ahora se llama userGuardado
                         .then(function (userGuardado) { //En el parámetro recibimos el registro que se acaba de crear en la base de datos.
                             //return res.send(userGuardado)
                             //redirigir
