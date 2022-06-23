@@ -83,9 +83,7 @@ const usersController = {
 
 
     create: function (req, res) {
-        //mostrar el form de registro
         //Controlar que el usario no esté logueado
-        //return res.render('register')
         if (req.session.user != undefined) {
             return res.redirect('/')
         } else {
@@ -95,11 +93,10 @@ const usersController = {
     },
     store: function (req, res) {
         //Detectar situaciones irregulares o errores.
-        //return res.send(req.file)
-        res.locals.errores = "";
+        res.locals.errores = ""; // Vacío porque no hay errores
         let errores = {};
 
-        //Chequear que email no esté vacío
+        //Chequear que los campos no esten vacíos
         if (req.body.email == "") { 
             errores.message = "El email es obligatorio";
         } else if (req.body.password == "") {
@@ -113,13 +110,13 @@ const usersController = {
         }
 
         if (errores.message) { // Hicimos un if aparte para no ponerlo después de cada validación
-            res.locals.errores = errores;
+            res.locals.errores = errores; // Paso los errores del array al objeto de locals
             return res.render('register');
         }
         //Chequear que el email no exista en la base.
         users.findOne({
                 where: [{
-                    email: req.body.email
+                    email: req.body.email 
                 }]
             })
             .then(function (user) {
@@ -136,11 +133,9 @@ const usersController = {
                         password: bcrypt.hashSync(req.body.password, 10), //vamos a hashear la contraseña que viene del formulario.
                         profilePic: req.file.filename,
                     }
-                    //return res.send (user)
                     //Guardar la info en la base de datos
                     users.create(user) // Guardo la info en la base de datos --> Ahora se llama userGuardado
                         .then(function (userGuardado) { //En el parámetro recibimos el registro que se acaba de crear en la base de datos.
-                            //return res.send(userGuardado)
                             //redirigir
                             req.session.user = userGuardado.dataValues;
                             return res.redirect('/')
