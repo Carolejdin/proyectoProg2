@@ -1,7 +1,8 @@
-//const libros = require('../db/data');
 const db = require('../database/models/index');
 const op = db.Sequelize.Op;
-const products = db.Product;
+
+//Obtener modelos con db
+const products = db.Product; 
 const users = db.User;
 const comment = db.Comentario;
 
@@ -97,7 +98,6 @@ const productController = {
         }]
       })
       .then((producto) => {
-        //return res.send(producto)
            return res.render('product', {
             producto: producto});
         })
@@ -106,21 +106,6 @@ const productController = {
         return res.send(error);
       })
   },
-/*   showEdit: function (req, res) {
-    res.render('productEdit')
-  },
-  edit: function (req, res) {
-    db.Product.findByPk(req.params.id)
-      .then(function (Product) {
-        res.render('productEdit', {
-          Product
-        });
-      })
-      .catch(function (error) {
-        res.send(error)
-      })
-  }, */
-
 
   delete: function (req, res) {
     products.destroy({
@@ -151,10 +136,9 @@ const productController = {
       return res.render('register');
   }
     })
-},
+  },
 
-edited: function (req, res) {
-
+  edited: function (req, res) {
 
   let producto = {
     nombre: req.body.nombre,
