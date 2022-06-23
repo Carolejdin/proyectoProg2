@@ -55,10 +55,18 @@
 						<article>
 							<img src= "/images/<%=producto.comentarios[i].user.profilePic%>" alt="img perfil">
 							<div class="data">
-								<p class="user">
+								<% if (locals.user) { %>
+								<p class="user"> 
 								<strong> <a href="/users/profile?userId=<%=producto.comentarios[i].user.id%>"> <%=producto.comentarios[i].user.username%> </a> </strong>
 									<%=producto.comentarios[i].comentario %> 
 								</p>
+								<% } else { %>
+									<p class="user"> 
+									<strong> <a href="/users/register"> <%=producto.comentarios[i].user.username%> </a> </strong>
+										<%=producto.comentarios[i].comentario %> 
+									</p>
+									<% } %>
+								
 							
 		
 								
